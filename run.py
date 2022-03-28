@@ -1,4 +1,7 @@
 class Runner:
+  """
+  Defines the runner's name, distance and chosen units to be used in the calculations
+  """
   
     def __init__(self, name, distance, units):
         self.name = name
