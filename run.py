@@ -1,11 +1,13 @@
+import os
+
 class Runner:
     """
     Defines the runner's name, distance and chosen units
     to be used in the calculator.
     """
-def __init__(self, name, distance, units):
-    self.name = name
-    self.units = units
+    def __init__(self, name, distance, units):
+        self.name = name
+        self.units = units
     
     if distance == "Marathon" and units == "km":
         self.distance = 42.195
@@ -22,7 +24,14 @@ def __init__(self, name, distance, units):
     elif distance == "10km" and units == "miles":
         self.distance = 6.21371
     elif distance == "5km" and units == "miles":
-        self.distance = 3.106856 
+        self.distance = 3.10686
+
+
+def cls():
+    """
+    Clear the interface.
+    """
+    os.system('cls' if os.name=='nt' else 'clear')
 
 
 def get_user_data():
@@ -37,6 +46,7 @@ def get_user_data():
     print("-" * 40)
     runner_distance = get_user_distance()
     runner_units = get_user_units()
+    cls()
     print(runner_units)
 
 
