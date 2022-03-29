@@ -12,22 +12,23 @@ class Runner:
         self.units = units
         self.distance = distance
 
-    # if self.distance == "Marathon" and self.units == "km":
-    #     self.distance = 42.195
-    # elif self.distance == "Half Marathon" and self.units == "km":
-    #     self.distance = 21.0975
-    # elif self.distance == "10km" and self.units == "km":
-    #     self.distance = 10.000
-    # elif self.distance == "5km" and self.units == "km":
-    #     self.distance = 5.000
-    # elif self.distance == "Marathon" and self.units == "miles":
-    #     self.distance = 26.2188
-    # elif self.distance == "Half Marathon" and self.units == "miles":
-    #     self.distance = 13.1094
-    # elif self.distance == "10km" and self.units == "miles":
-    #     self.distance = 6.21371
-    # elif self.distance == "5km" and self.units == "miles":
-    #     self.distance = 3.10686
+    def get_distance(self):
+        if self.distance == "Marathon" and self.units == "km":
+            self.distance = 42.195
+        elif self.distance == "Half Marathon" and self.units == "km":
+            self.distance = 21.0975
+        elif self.distance == "10km" and self.units == "km":
+            self.distance = 10.000
+        elif self.distance == "5km" and self.units == "km":
+            self.distance = 5.000
+        elif self.distance == "Marathon" and self.units == "miles":
+            self.distance = 26.2188
+        elif self.distance == "Half Marathon" and self.units == "miles":
+            self.distance = 13.1094
+        elif self.distance == "10km" and self.units == "miles":
+            self.distance = 6.21371
+        elif self.distance == "5km" and self.units == "miles":
+            self.distance = 3.10686
 
 
 def cls():
@@ -80,10 +81,10 @@ def get_user_distance():
         return "Half Marathon"
     elif choice == 3:
         print("You selected '10km'!")
-        return "5km"
+        return "10km"
     elif choice == 4:
         print("You selected '5km'!")
-        return "1km"
+        return "5km"
     elif choice == 5:
         print("OK, this programme will now exit")
         # exit()
@@ -130,6 +131,7 @@ def main():
     """
     user_data = get_user_data()
     runner = Runner(user_data[0], user_data[1], user_data[2])
+    runner_distance = Runner.get_distance(runner)
     print(runner.name)
     print(runner.distance)
     print(runner.units)
