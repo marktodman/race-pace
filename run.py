@@ -1,4 +1,6 @@
 import os
+import time
+
 
 class Runner:
     """
@@ -8,30 +10,32 @@ class Runner:
     def __init__(self, name, distance, units):
         self.name = name
         self.units = units
-    
-    if distance == "Marathon" and units == "km":
-        self.distance = 42.195
-    elif distance == "Half Marathon" and units == "km":
-        self.distance = 21.0975
-    elif distance == "10km" and units == "km":
-        self.distance = 10.000
-    elif distance == "5km" and units == "km":
-        self.distance = 5.000
-    elif distance == "Marathon" and units == "miles":
-        self.distance = 26.2188
-    elif distance == "Half Marathon" and units == "miles":
-        self.distance = 13.1094
-    elif distance == "10km" and units == "miles":
-        self.distance = 6.21371
-    elif distance == "5km" and units == "miles":
-        self.distance = 3.10686
+        self.distance = distance
+
+    # if self.distance == "Marathon" and self.units == "km":
+    #     self.distance = 42.195
+    # elif self.distance == "Half Marathon" and self.units == "km":
+    #     self.distance = 21.0975
+    # elif self.distance == "10km" and self.units == "km":
+    #     self.distance = 10.000
+    # elif self.distance == "5km" and self.units == "km":
+    #     self.distance = 5.000
+    # elif self.distance == "Marathon" and self.units == "miles":
+    #     self.distance = 26.2188
+    # elif self.distance == "Half Marathon" and self.units == "miles":
+    #     self.distance = 13.1094
+    # elif self.distance == "10km" and self.units == "miles":
+    #     self.distance = 6.21371
+    # elif self.distance == "5km" and self.units == "miles":
+    #     self.distance = 3.10686
 
 
 def cls():
     """
-    Clear the interface.
+    Clears the user interface.
     """
-    os.system('cls' if os.name=='nt' else 'clear')
+
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def get_user_data():
@@ -43,12 +47,17 @@ def get_user_data():
     print("We will help you smash a PR in your next race!")
     print("-" * 40)
     runner_name = input("Please enter your name: ")
+    print(f"Hi, {runner_name}, please tell me more about your race...\n")
+    print("What distance is your race?")
     print("-" * 40)
     runner_distance = get_user_distance()
-    runner_units = get_user_units()
+    time.sleep(1)
     cls()
-    print(runner_units)
-
+    print("-" * 40)
+    runner_units = get_user_units()
+    time.sleep(1)
+    cls()
+    return runner_name, runner_distance, runner_units
 
 def get_user_distance():
     """
@@ -60,10 +69,9 @@ def get_user_distance():
     print("4: 5km")
     print("5: Exit")
     print("-" * 40)
-    print("What distance is your race?")
-    print("Please input only the number for your run distance, e.g. input '1' for Marathon")
+    print("Please input only the option number, e.g. input '4' for 5km")
     choice = int(input("Enter your distance: "))
-
+    
     if choice == 1:
         print("You selected 'Marathon' - going long!")
         return "Marathon"
@@ -120,7 +128,11 @@ def main():
     """
     Runs the functions for the main program.
     """
-    get_user_data()
+    user_data = get_user_data()
+    runner = Runner(user_data[0], user_data[1], user_data[2])
+    print(runner.name)
+    print(runner.distance)
+    print(runner.units)
 
 
 main()
