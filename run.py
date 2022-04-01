@@ -39,31 +39,24 @@ def cls():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-def get_user_data():
+def get_runner_name():
     """
     Sets up the runner, including name, distance and preferred units.
     """
     print("-" * 40)
-    print("Welcome to the Race Pace Calculator.")
-    print("We will help you smash a PR in your next race!")
-    print("-" * 40)
     runner_name = input("Please enter your name: ")
-    print(f"Hi, {runner_name}, please tell me more about your race...\n")
-    print("What distance is your race?")
-    print("-" * 40)
-    runner_distance = get_user_distance()
+    print(f"\nHi {runner_name}, please tell me more about your race...\n")
     time.sleep(1)
     cls()
-    print("-" * 40)
-    runner_units = get_user_units()
-    time.sleep(1)
-    cls()
-    return runner_name, runner_distance, runner_units
+    return runner_name
 
-def get_user_distance():
+
+def get_runner_distance(name):
     """
     Gets the runner's distance from a menu to avoid typing errors.
     """
+    print(f"{name}, what distance is your race?")
+    print("-" * 40)
     print("1: Marathon")
     print("2: Half Marathon")
     print("3: 10km")
@@ -72,7 +65,7 @@ def get_user_distance():
     print("-" * 40)
     print("Please input only the option number, e.g. input '4' for 5km")
     choice = int(input("Enter your distance: "))
-    
+
     if choice == 1:
         print("You selected 'Marathon' - going long!")
         return "Marathon"
@@ -94,9 +87,11 @@ def get_user_distance():
         get_user_distance()
 
 
-def get_user_units():
+def get_runner_units():
+    pass
     """
-    Gets the runner's choice of units - kilometers or miles
+    Gets the runner's choice of units - kilometers or miles - from a menu
+    to avoid typing errors.
     """
     print("Would you prefer to use miles or kilometers?")
     print("1: Kilometers")
@@ -125,16 +120,31 @@ def get_user_units():
         get_user_distance()
 
 
+def choose_pace_time():
+    pass
+    """
+    The user can choose to calculate pace for a target finish time
+    or calculate a finish time based on a target pace.
+    """
+    distance = user_data[1]
+    print(distance)
+
+
 def main():
     """
     Runs the functions for the main program.
     """
-    user_data = get_user_data()
-    runner = Runner(user_data[0], user_data[1], user_data[2])
-    runner_distance = Runner.get_distance(runner)
-    print(runner.name)
-    print(runner.distance)
-    print(runner.units)
+    runner_name = get_runner_name()
+    runner_distance = get_runner_distance(runner_name)
+    # convert_distance = Runner.get_distance(runner) # create distance as an int
+    # distance = runner.distance
+    # choose_pace_time()
+    print(runner_name)
+    print(runner_distance)
 
 
+print("RACE PACE")
+print("-" * 40)
+print("Welcome to the Race Pace Calculator.")
+print("We will help you smash a PR in your next race!")
 main()
