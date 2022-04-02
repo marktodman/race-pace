@@ -21,13 +21,13 @@ class Runner:
             self.distance = 10.000
         elif self.distance == "5km" and self.units == "km":
             self.distance = 5.000
-        elif self.distance == "Marathon" and self.units == "miles":
+        elif self.distance == "Marathon" and self.units == "mile":
             self.distance = 26.2188
-        elif self.distance == "Half Marathon" and self.units == "miles":
+        elif self.distance == "Half Marathon" and self.units == "mile":
             self.distance = 13.1094
-        elif self.distance == "10km" and self.units == "miles":
+        elif self.distance == "10km" and self.units == "mile":
             self.distance = 6.21371
-        elif self.distance == "5km" and self.units == "miles":
+        elif self.distance == "5km" and self.units == "mile":
             self.distance = 3.10686
 
 
@@ -92,8 +92,8 @@ def get_runner_units(name):
     """
     print(f"Would you prefer to use miles or kilometers, {name}?")
     print("-" * 40)
-    print("1: Kilometers")
-    print("2: Miles")
+    print("1: Kilometer")
+    print("2: Mile")
     print("3: Restart")
     print("4: Exit")
     print("-" * 40)
@@ -101,11 +101,11 @@ def get_runner_units(name):
     choice = int(input("Enter your preference: "))
 
     if choice == 1:
-        print("You selected 'Kilometers'")
+        print("You selected 'Kilometer'")
         return "km"
     elif choice == 2:
-        print("You selected 'Miles'")
-        return "miles"
+        print("You selected 'Mile'")
+        return "mile"
     elif choice == 3:
         print("You selected 'Restart', so the program will restart")
         main()
@@ -149,6 +149,19 @@ def choose_pace_time(name):
         print('-' * 40)
 
 
+def get_pace(name, distance_str, unit):
+    """
+    Calculates the race pace required to achieve the target time.
+    """
+    print(f"So {name} let's calculate your {distance_str} target time")
+    print("To do this we need to know your running pace\n")
+    print(f"How long does it take you to run 1 {unit}?")
+    print("Please input in the format MM:SS, e.g. 06:30")
+    pace = input(f"Enter your time for 1 {unit}: ")
+
+    return pace
+
+
 def main():
     """
     Runs the functions for the main program.
@@ -168,12 +181,14 @@ def main():
     pace_time = choose_pace_time(runner_name)
     time.sleep(1)
     cls()
+    pace = get_pace(runner_name, runner_distance, runner_units)
 
     print(runner_name)
     print(runner_distance)
     print(runner_units)
     print(distance_converted)
     print(pace_time)
+    print(pace)
 
 
 print("RACE PACE")
