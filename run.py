@@ -153,13 +153,39 @@ def get_pace(name, distance_str, unit):
     """
     Calculates the race pace required to achieve the target time.
     """
-    print(f"So {name} let's calculate your {distance_str} target time")
+    print(f"So {name} let's calculate your esitmated {distance_str} time")
     print("To do this we need to know your running pace\n")
-    print(f"How long does it take you to run 1 {unit}?")
+    print(f"How long does it take you to run 1 {unit}?\n")
     print("Please input in the format MM:SS, e.g. 06:30")
     pace = input(f"Enter your time for 1 {unit}: ")
+    print(f"You entered {pace}")
+    # print("Is that correct?")
 
     return pace
+
+
+def calculate_time(name, distance_str, distance_int, pace):
+    """
+    Calculates target time for given race length based on runner pace.
+    """
+    split_pace = pace.split(":")
+    mins = int(split_pace[0])
+    secs = int(split_pace[1])
+    pace_secs = mins * 60 + secs
+
+    race_time_secs = pace_secs * int(distance_int)
+
+    hours = race_time_secs // 3600
+    time_over = race_time_secs % 3600
+    minutes = time_over // 60
+    seconds = time_over % 60
+
+    finish_time = str(hours) + ":" + str(minutes) + ":" + str(seconds)
+
+    print(f"You should complete your {distance_str} in {finish_time}")
+    print(f"Go well in your race, {name}!")
+    
+    return finish_time
 
 
 def main():
@@ -182,6 +208,9 @@ def main():
     time.sleep(1)
     cls()
     pace = get_pace(runner_name, runner_distance, runner_units)
+    time.sleep(1)
+    cls()
+    race_time = calculate_time(runner_name, runner_distance, distance_converted, pace)
 
     print(runner_name)
     print(runner_distance)
@@ -189,6 +218,7 @@ def main():
     print(distance_converted)
     print(pace_time)
     print(pace)
+    print(race_time)
 
 
 print("RACE PACE")
