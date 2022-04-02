@@ -108,7 +108,7 @@ def get_runner_units(name):
         return "miles"
     elif choice == 3:
         print("You selected 'Restart', so the program will restart")
-        get_user_data()
+        main()
     elif choice == 4:
         print("OK, the programme will now exit - BYE!")
         exit()
@@ -117,14 +117,36 @@ def get_runner_units(name):
         print('-' * 40)
 
 
-def choose_pace_time():
-    pass
+def choose_pace_time(name):
     """
     The user can choose to calculate pace for a target finish time
     or calculate a finish time based on a target pace.
     """
-    distance = user_data[1]
-    print(distance)
+    print(f"Do you have a target time or target pace, {name}?")
+    print("-" * 40)
+    print("1: I have a target finish time")
+    print("2: I have a target pace")
+    print("3: Restart")
+    print("4: Exit")
+    print("-" * 40)
+    print("Please input only the number, e.g. input '1' for target time")
+    choice = int(input("Enter your preference: "))
+
+    if choice == 1:
+        print("You selected 'target finish time'")
+        return "time"
+    elif choice == 2:
+        print("You selected 'target pace'")
+        return "pace"
+    elif choice == 3:
+        print("You selected 'Restart', so the program will restart")
+        main()
+    elif choice == 4:
+        print("OK, the programme will now exit - BYE!")
+        exit()
+    else:
+        print("Invalid option. Please enter a number between 1 and 5.")
+        print('-' * 40)
 
 
 def main():
@@ -143,11 +165,15 @@ def main():
     new_runner = Runner(runner_name, runner_distance, runner_units)
     convert_distance = Runner.get_distance(new_runner)
     distance_converted = new_runner.distance
+    pace_time = choose_pace_time(runner_name)
+    time.sleep(1)
+    cls()
 
     print(runner_name)
     print(runner_distance)
     print(runner_units)
     print(distance_converted)
+    print(pace_time)
 
 
 print("RACE PACE")
