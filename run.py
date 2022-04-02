@@ -41,13 +41,11 @@ def cls():
 
 def get_runner_name():
     """
-    Sets up the runner, including name, distance and preferred units.
+    Gets the runner's name.
     """
     print("-" * 40)
     runner_name = input("Please enter your name: ")
     print(f"\nHi {runner_name}, please tell me more about your race...\n")
-    time.sleep(1)
-    cls()
     return runner_name
 
 
@@ -55,7 +53,7 @@ def get_runner_distance(name):
     """
     Gets the runner's distance from a menu to avoid typing errors.
     """
-    print(f"{name}, what distance is your race?")
+    print(f"What distance is your race, {name}?")
     print("-" * 40)
     print("1: Marathon")
     print("2: Half Marathon")
@@ -79,21 +77,21 @@ def get_runner_distance(name):
         print("You selected '5km'!")
         return "5km"
     elif choice == 5:
-        print("OK, this programme will now exit")
-        # exit()
+        print("OK, the programme will now exit - BYE!")
+        exit()
     else:
         print("Invalid option. Please enter a number between 1 and 5.")
         print('-' * 40)
-        get_user_distance()
+        # get_runner_distance()
 
 
-def get_runner_units():
-    pass
+def get_runner_units(name):
     """
     Gets the runner's choice of units - kilometers or miles - from a menu
     to avoid typing errors.
     """
-    print("Would you prefer to use miles or kilometers?")
+    print(f"Would you prefer to use miles or kilometers, {name}?")
+    print("-" * 40)
     print("1: Kilometers")
     print("2: Miles")
     print("3: Restart")
@@ -112,12 +110,11 @@ def get_runner_units():
         print("You selected 'Restart', so the program will restart")
         get_user_data()
     elif choice == 4:
-        print("OK, this programme will now exit")
-        # exit()
+        print("OK, the programme will now exit - BYE!")
+        exit()
     else:
         print("Invalid option. Please enter a number between 1 and 5.")
         print('-' * 40)
-        get_user_distance()
 
 
 def choose_pace_time():
@@ -135,12 +132,22 @@ def main():
     Runs the functions for the main program.
     """
     runner_name = get_runner_name()
+    time.sleep(1)
+    cls()
     runner_distance = get_runner_distance(runner_name)
-    # convert_distance = Runner.get_distance(runner) # create distance as an int
-    # distance = runner.distance
-    # choose_pace_time()
+    time.sleep(1)
+    cls()
+    runner_units = get_runner_units(runner_name)
+    time.sleep(1)
+    cls()
+    new_runner = Runner(runner_name, runner_distance, runner_units)
+    convert_distance = Runner.get_distance(new_runner)
+    distance_converted = new_runner.distance
+
     print(runner_name)
     print(runner_distance)
+    print(runner_units)
+    print(distance_converted)
 
 
 print("RACE PACE")
