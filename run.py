@@ -1,5 +1,7 @@
 import os
 import time
+import math
+from math import modf
 
 
 class Runner:
@@ -18,9 +20,9 @@ class Runner:
         elif self.distance == "Half Marathon" and self.units == "km":
             self.distance = 21.0975
         elif self.distance == "10km" and self.units == "km":
-            self.distance = 10.000
+            self.distance = 10.0
         elif self.distance == "5km" and self.units == "km":
-            self.distance = 5.000
+            self.distance = 5.0
         elif self.distance == "Marathon" and self.units == "mile":
             self.distance = 26.2188
         elif self.distance == "Half Marathon" and self.units == "mile":
@@ -164,7 +166,7 @@ def get_pace(name, distance_str, unit):
     return pace
 
 
-def calculate_time(name, distance_str, distance_int, pace):
+def calculate_time(name, distance_str, distance_num, pace):
     """
     Calculates target time for given race length based on runner pace.
     """
@@ -173,18 +175,21 @@ def calculate_time(name, distance_str, distance_int, pace):
     secs = int(split_pace[1])
     pace_secs = mins * 60 + secs
 
-    race_time_secs = pace_secs * int(distance_int)
+    race_time_secs = pace_secs * distance_num
 
-    hours = race_time_secs // 3600
-    time_over = race_time_secs % 3600
-    minutes = time_over // 60
-    seconds = time_over % 60
-
-    finish_time = str(hours) + ":" + str(minutes) + ":" + str(seconds)
-
+    hours = int(race_time_secs // 3600)
+    time_over = math.fmod(race_time_secs, 3600)
+    float_mins = time_over / 60
+    s, m = modf(float_mins)
+    minutes = int(m)
+    seconds = int(s * 60)
+    if seconds < 10:
+        sec_str = "0" + str(seconds)
+    else:
+        sec_str = str(seconds)
+    finish_time = str(hours) + ":" + str(minutes) + ":" + sec_str
     print(f"You should complete your {distance_str} in {finish_time}")
     print(f"Go well in your race, {name}!")
-    
     return finish_time
 
 
@@ -202,20 +207,20 @@ def main():
     time.sleep(1)
     cls()
     new_runner = Runner(runner_name, runner_distance, runner_units)
-    convert_distance = Runner.get_distance(new_runner)
-    distance_converted = new_runner.distance
+    convert_dist = Runner.get_distance(new_runner)
+    dist_converted = new_runner.distance
     pace_time = choose_pace_time(runner_name)
     time.sleep(1)
     cls()
     pace = get_pace(runner_name, runner_distance, runner_units)
     time.sleep(1)
     cls()
-    race_time = calculate_time(runner_name, runner_distance, distance_converted, pace)
+    race_time = calculate_time(runner_name, runner_distance, dist_converted, pace)
 
     print(runner_name)
     print(runner_distance)
     print(runner_units)
-    print(distance_converted)
+    print(dist_converted)
     print(pace_time)
     print(pace)
     print(race_time)
