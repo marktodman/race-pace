@@ -180,11 +180,11 @@ def get_time(name, distance_str):
     return race_time
 
 
-def calculate_time(name, distance_str, distance_num, pace):
+def calculate_time(name, distance_str, distance_num, race_pace):
     """
     Calculates target time for given race length based on runner pace.
     """
-    split_pace = pace.split(":")
+    split_pace = race_pace.split(":")
     mins = int(split_pace[0])
     secs = int(split_pace[1])
     pace_secs = mins * 60 + secs
@@ -203,19 +203,42 @@ def calculate_time(name, distance_str, distance_num, pace):
         sec_str = str(seconds)
     finish_time = str(hours) + ":" + str(minutes) + ":" + sec_str
     print(f"You should complete your {distance_str} in {finish_time}\n")
-    start_again = input(f"Would you like to calculate again, {name}? Enter y/n: ")
-    if start_again == y:
-        main()
-    elif start_again == n:
-        print(f"OK, go well in your race, {name}! BYE!")
-        exit()
+    # start_again = input(f"Would you like to calculate again, {name}? Enter y/n: ")
+    # if start_again == y:
+    #     main()
+    # elif start_again == n:
+    #     print(f"OK, go well in your race, {name}! BYE!")
+    #     exit()
+    # else:
+    #     print(f"OK, go well in your race, {name}! BYE!")
+    #     exit()
+
+
+def calculate_pace(name, distance_str, distance_num, race_time, unit):
+    """
+    Calculates target pace for given race length based on runner target finish time.
+    """
+    split_time = race_time.split(":")
+    hrs = int(split_time[0])
+    mins = int(split_time[1])
+    secs = int(split_time[2])
+
+    total_secs = (hrs * 3600) + (mins * 60) + secs
+
+    pace_total_secs = total_secs / distance_num 
+
+    pace_mins_float = pace_total_secs / 60
+    s, m = modf(pace_mins_float)
+    minutes = int(m)
+    seconds = int(s * 60)
+    if seconds < 10:
+        sec_str = "0" + str(seconds)
     else:
-        print(f"OK, go well in your race, {name}! BYE!")
-        exit()
+        sec_str = str(seconds)
 
+    target_pace = str(minutes) + ":" + sec_str
+    print(f"You should run {target_pace} per {unit} to finish in {race_time}\n")
 
-def calculate_pace():
-    pass
 
 
 def main():
@@ -244,6 +267,9 @@ def main():
         race_finish_time = calculate_time(runner_name, runner_distance, dist_converted, race_pace)
     else:
         race_time = get_time(runner_name, runner_distance)
+        time.sleep(1)
+        cls()
+        race_finish_pace = calculate_pace(runner_name, runner_distance, dist_converted, race_time, runner_units)
     
     # time.sleep(1)
     # cls()
