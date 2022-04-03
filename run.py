@@ -2,6 +2,7 @@ import os
 import time
 import math
 from math import modf
+from termcolor import colored, cprint
 
 
 class Runner:
@@ -265,9 +266,13 @@ def main():
         race_finish_pace = calculate_pace(runner_name, runner_distance, dist_converted, race_time, runner_units)
     # Need to put in option to start again and exit
     # Need to validate inputs!
+    # Show splits using dictionary
+
+print_green = lambda x: cprint(x, 'green')
+print_blue_on_white = lambda x: cprint(x, 'blue', 'on_white')
 
 
-print("RACE PACE")
+print_blue_on_white("RACE PACE")
 print("-" * 40)
 print("Welcome to the Race Pace Calculator.")
 print("We will help you smash a PR in your next race!")
