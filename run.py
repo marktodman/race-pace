@@ -136,10 +136,10 @@ def choose_pace_time(name):
 
     if choice == 1:
         print("You selected 'target finish time'")
-        return "time"
+        return "race_time"
     elif choice == 2:
         print("You selected 'target pace'")
-        return "pace"
+        return "race_pace"
     elif choice == 3:
         print("You selected 'Restart', so the program will restart")
         main()
@@ -153,17 +153,31 @@ def choose_pace_time(name):
 
 def get_pace(name, distance_str, unit):
     """
-    Calculates the race pace required to achieve the target time.
+    Gets the runner's pace used to calculate estimated finish time.
     """
     print(f"So {name} let's calculate your esitmated {distance_str} time")
     print("To do this we need to know your running pace\n")
     print(f"How long does it take you to run 1 {unit}?\n")
     print("Please input in the format MM:SS, e.g. 06:30")
-    pace = input(f"Enter your time for 1 {unit}: ")
-    print(f"You entered {pace}")
+    race_pace = input(f"Enter your time for 1 {unit}: ")
+    print(f"You entered {race_pace}")
     # print("Is that correct?")
 
-    return pace
+    return race_pace
+
+def get_time(name, distance_str):
+    """
+    Gets the runner's target finish time.
+    """
+    print(f"So {name} let's calculate your required pace")
+    print(f"To do this we need to know your target {distance_str} finish time\n")
+    print(f"What is your target time for the {distance_str}?\n")
+    print("Please input in the format HH:MM:SS, e.g. 01:02:00")
+    race_time = input(f"Enter your target time for the {distance_str}: ")
+    print(f"You entered {race_time}")
+    # print("Is that correct?")
+
+    return race_time
 
 
 def calculate_time(name, distance_str, distance_num, pace):
@@ -188,9 +202,20 @@ def calculate_time(name, distance_str, distance_num, pace):
     else:
         sec_str = str(seconds)
     finish_time = str(hours) + ":" + str(minutes) + ":" + sec_str
-    print(f"You should complete your {distance_str} in {finish_time}")
-    print(f"Go well in your race, {name}!")
-    return finish_time
+    print(f"You should complete your {distance_str} in {finish_time}\n")
+    start_again = input(f"Would you like to calculate again, {name}? Enter y/n: ")
+    if start_again == y:
+        main()
+    elif start_again == n:
+        print(f"OK, go well in your race, {name}! BYE!")
+        exit()
+    else:
+        print(f"OK, go well in your race, {name}! BYE!")
+        exit()
+
+
+def calculate_pace():
+    pass
 
 
 def main():
@@ -209,21 +234,27 @@ def main():
     new_runner = Runner(runner_name, runner_distance, runner_units)
     convert_dist = Runner.get_distance(new_runner)
     dist_converted = new_runner.distance
-    pace_time = choose_pace_time(runner_name)
+    race_pace_time = choose_pace_time(runner_name)
     time.sleep(1)
     cls()
-    pace = get_pace(runner_name, runner_distance, runner_units)
-    time.sleep(1)
-    cls()
-    race_time = calculate_time(runner_name, runner_distance, dist_converted, pace)
-
-    print(runner_name)
-    print(runner_distance)
-    print(runner_units)
-    print(dist_converted)
-    print(pace_time)
-    print(pace)
-    print(race_time)
+    if race_pace_time == 'race_pace':
+        race_pace = get_pace(runner_name, runner_distance, runner_units)
+        time.sleep(1)
+        cls()
+        race_finish_time = calculate_time(runner_name, runner_distance, dist_converted, race_pace)
+    else:
+        race_time = get_time(runner_name, runner_distance)
+    
+    # time.sleep(1)
+    # cls()
+    
+    # print(runner_name)
+    # print(runner_distance)
+    # print(runner_units)
+    # print(dist_converted)
+    # print(pace_time)
+    # print(pace)
+    # print(race_time)
 
 
 print("RACE PACE")
