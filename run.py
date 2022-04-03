@@ -203,15 +203,7 @@ def calculate_time(name, distance_str, distance_num, race_pace):
         sec_str = str(seconds)
     finish_time = str(hours) + ":" + str(minutes) + ":" + sec_str
     print(f"You should complete your {distance_str} in {finish_time}\n")
-    # start_again = input(f"Would you like to calculate again, {name}? Enter y/n: ")
-    # if start_again == y:
-    #     main()
-    # elif start_again == n:
-    #     print(f"OK, go well in your race, {name}! BYE!")
-    #     exit()
-    # else:
-    #     print(f"OK, go well in your race, {name}! BYE!")
-    #     exit()
+    print(f"Go well in your race, {name}!")
 
 
 def calculate_pace(name, distance_str, distance_num, race_time, unit):
@@ -237,7 +229,8 @@ def calculate_pace(name, distance_str, distance_num, race_time, unit):
         sec_str = str(seconds)
 
     target_pace = str(minutes) + ":" + sec_str
-    print(f"You should run {target_pace} per {unit} to finish in {race_time}\n")
+    print(f"You need to run {target_pace} per {unit} to finish in {race_time}\n")
+    print(f"Go well in your race, {name}!")
 
 
 
@@ -270,17 +263,8 @@ def main():
         time.sleep(1)
         cls()
         race_finish_pace = calculate_pace(runner_name, runner_distance, dist_converted, race_time, runner_units)
-    
-    # time.sleep(1)
-    # cls()
-    
-    # print(runner_name)
-    # print(runner_distance)
-    # print(runner_units)
-    # print(dist_converted)
-    # print(pace_time)
-    # print(pace)
-    # print(race_time)
+    # Need to put in option to start again and exit
+    # Need to validate inputs!
 
 
 print("RACE PACE")
