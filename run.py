@@ -3,6 +3,7 @@ import time
 import math
 from math import modf
 from termcolor import colored, cprint
+from pyfiglet import Figlet
 
 
 class Runner:
@@ -173,7 +174,7 @@ def get_time(name, distance_str):
     print(f"So {name} let's calculate your required pace")
     print(f"To do this we need to know your target {distance_str} finish time\n")
     print(f"What is your target time for the {distance_str}?\n")
-    print("Please input in the format HH:MM:SS, e.g. 01:02:00")
+    print("Please input in the format H:MM:SS, e.g. 1:02:00")
     race_time = input(f"Enter your target time for the {distance_str}: ")
     print(f"You entered {race_time}")
     # print("Is that correct?")
@@ -270,9 +271,9 @@ def main():
 
 print_green = lambda x: cprint(x, 'green')
 print_blue_on_white = lambda x: cprint(x, 'blue', 'on_white')
+f = Figlet(font='speed')
 
-
-print_blue_on_white("RACE PACE")
+print(f.renderText("RACE PACE"))
 print("-" * 40)
 print("Welcome to the Race Pace Calculator.")
 print("We will help you smash a PR in your next race!")
