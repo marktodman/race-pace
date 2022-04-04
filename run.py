@@ -70,11 +70,14 @@ def get_runner_name():
     """
     Gets the runner's name.
     """
-    print("-" * 40)
-    runner_name = input("Please enter your name: ")
-    print(f"\nHi {runner_name}, please tell me more about your race...\n")
-
-    return runner_name
+    while True:
+        print("-" * 40)
+        runner_name = input("Please enter your name: \n")
+        if runner_name.isalpha():
+            print(f"\nHi {runner_name}, please tell me more about your race...\n")
+            return runner_name
+        else:
+            print_error_text("Invalid option. Please enter your name...\n")
 
 
 def get_runner_distance(name):
@@ -93,7 +96,7 @@ def get_runner_distance(name):
         print("Please input only the option number, e.g. input '4' for 5km")
         choice = ""
         try:
-            choice = int(input("Enter your distance: "))
+            choice = int(input("Enter your distance: \n"))
         except ValueError:
             print_error_text("Wrong input type...")
 
@@ -134,7 +137,7 @@ def get_runner_units(name):
         print("Please input only the number, e.g. input '2' for miles")
         choice = ""
         try:
-            choice = int(input("Enter your preference: "))
+            choice = int(input("Enter your preference: \n"))
         except ValueError:
             print_error_text("Wrong input type...")
 
@@ -173,7 +176,7 @@ def choose_pace_time(name):
         print("Please input only the number, e.g. input '1' for target time")
         choice = ""
         try:
-            choice = int(input("Enter your preference: "))
+            choice = int(input("Enter your preference: \n"))
         except ValueError:
             print_error_text("Wrong input type...")
 
@@ -206,7 +209,7 @@ def get_pace(name, distance_str, unit):
         print("To do this we need to know your running pace\n")
         print(f"How long does it take you to run 1 {unit}?\n")
         print("Please input in the format M:SS or MM:SS, e.g. 6:30 or 10:05")
-        race_pace = input(f"Enter your time for 1 {unit}: ")
+        race_pace = input(f"Enter your time for 1 {unit}: \n")
         try:
             valid_time = datetime.datetime.strptime(race_pace, timeformat)
             print_input_text(f"You entered {race_pace}")
@@ -225,7 +228,7 @@ def get_time(name, distance_str):
         print(f"To do this we need to know your target {distance_str} finish time\n")
         print(f"What is your target time for the {distance_str}?\n")
         print("Please input in the format H:MM:SS, e.g. 1:02:00")
-        race_time = input(f"Enter your target time for the {distance_str}: ")
+        race_time = input(f"Enter your target time for the {distance_str}: \n")
         try:
             valid_time = datetime.datetime.strptime(race_time, timeformat)
             print_input_text(f"You entered {race_time}")
