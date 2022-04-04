@@ -1,5 +1,6 @@
 import os
 import time
+import datetime
 import math
 from math import modf
 from termcolor import colored, cprint
@@ -214,15 +215,18 @@ def get_time(name, distance_str):
     """
     Gets the runner's target finish time.
     """
-    print(f"So {name} let's calculate your required pace")
-    print(f"To do this we need to know your target {distance_str} finish time\n")
-    print(f"What is your target time for the {distance_str}?\n")
-    print("Please input in the format H:MM:SS, e.g. 1:02:00")
-    race_time = input(f"Enter your target time for the {distance_str}: ")
-    print_input_text(f"You entered {race_time}")
-    print("Is that correct?")
-
-    return race_time
+    while True:
+        timeformat = "%H:%M:%S"
+        print(f"So {name} let's calculate your required pace")
+        print(f"To do this we need to know your target {distance_str} finish time\n")
+        print(f"What is your target time for the {distance_str}?\n")
+        print("Please input in the format H:MM:SS, e.g. 1:02:00")
+        race_time = input(f"Enter your target time for the {distance_str}: ")
+        try:
+            valid_time = datetime.datetime.strptime(race_time, timeformat)
+            return race_time
+        except ValueError:
+            print_error_text("Invalid option. Please enter time in the format H:MM:SS.\n")
 
 
 def calculate_time(name, distance_str, distance_num, race_pace):
