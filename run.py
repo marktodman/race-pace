@@ -109,7 +109,7 @@ def get_runner_distance(name):
             print_input_text("You selected '10km'!")
             return "10km"
         elif choice == 4:
-            print_error_text("You selected '5km'!")
+            print_input_text("You selected '5km'!")
             return "5km"
         elif choice == 5:
             print_error_text("OK, the program will now exit - BYE!")
