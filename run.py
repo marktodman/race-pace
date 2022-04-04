@@ -72,7 +72,7 @@ def get_runner_distance(name):
         try:
             choice = int(input("Enter your distance: "))
         except:
-            print_error_text("Wrong input type...")
+            print("Wrong input type...")
                 
         if choice == 1:
             print("You selected 'Marathon' - going long!")
@@ -88,11 +88,12 @@ def get_runner_distance(name):
             return "5km"
         elif choice == 5:
             print("OK, the programme will now exit - BYE!")
+            time.sleep(1)
             exit()
         else:
             print("Invalid option. Please enter a number between 1 and 5.\n")
             print('-' * 40)
-            
+
 
 def get_runner_units(name):
     """
@@ -112,7 +113,7 @@ def get_runner_units(name):
         try:
             choice = int(input("Enter your preference: "))
         except:
-            print(colored("Wrong input type..."), 'red', 'on_white')
+            print("Wrong input type...")
 
         if choice == 1:
             print("You selected 'Kilometer'")
@@ -122,12 +123,14 @@ def get_runner_units(name):
             return "mile"
         elif choice == 3:
             print("You selected 'Restart', so the program will restart")
+            time.sleep(1)
             main()
         elif choice == 4:
             print("OK, the programme will now exit - BYE!")
+            time.sleep(1)
             exit()
         else:
-            print("Invalid option. Please enter a number between 1 and 5.")
+            print("Invalid option. Please enter a number between 1 and 5.\n")
             print('-' * 40)
 
 
@@ -136,31 +139,38 @@ def choose_pace_time(name):
     The user can choose to calculate pace for a target finish time
     or calculate a finish time based on a target pace.
     """
-    print(f"Do you have a target time or target pace, {name}?")
-    print("-" * 40)
-    print("1: I have a target finish time")
-    print("2: I have a target pace")
-    print("3: Restart")
-    print("4: Exit")
-    print("-" * 40)
-    print("Please input only the number, e.g. input '1' for target time")
-    choice = int(input("Enter your preference: "))
+    while True:
+        print(f"Do you have a target time or target pace, {name}?")
+        print("-" * 40)
+        print("1: I have a target finish time")
+        print("2: I have a target pace")
+        print("3: Restart")
+        print("4: Exit")
+        print("-" * 40)
+        print("Please input only the number, e.g. input '1' for target time")
+        choice = ""
+        try:
+            choice = int(input("Enter your preference: "))
+        except:
+            print_error_text("Wrong input type...")
 
-    if choice == 1:
-        print("You selected 'target finish time'")
-        return "race_time"
-    elif choice == 2:
-        print("You selected 'target pace'")
-        return "race_pace"
-    elif choice == 3:
-        print("You selected 'Restart', so the program will restart")
-        main()
-    elif choice == 4:
-        print("OK, the programme will now exit - BYE!")
-        exit()
-    else:
-        print("Invalid option. Please enter a number between 1 and 5.")
-        print('-' * 40)
+        if choice == 1:
+            print("You selected 'target finish time'")
+            return "race_time"
+        elif choice == 2:
+            print("You selected 'target pace'")
+            return "race_pace"
+        elif choice == 3:
+            print("You selected 'Restart', so the program will restart")
+            time.sleep(1)
+            main()
+        elif choice == 4:
+            print("OK, the programme will now exit - BYE!")
+            time.sleep(1)
+            exit()
+        else:
+            print("Invalid option. Please enter a number between 1 and 5.\n")
+            print('-' * 40)
 
 
 def get_pace(name, distance_str, unit):
@@ -243,7 +253,6 @@ def calculate_pace(name, distance_str, distance_num, race_time, unit):
     target_pace = str(minutes) + ":" + sec_str
     print(f"You need to run {target_pace} per {unit} to finish in {race_time}\n")
     print(f"Go well in your race, {name}!")
-
 
 
 def main():
