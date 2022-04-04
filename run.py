@@ -42,7 +42,6 @@ def cls():
     """
     Clears the user interface.
     """
-
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
@@ -166,7 +165,7 @@ def choose_pace_time(name):
     or calculate a finish time based on a target pace.
     """
     while True:
-        print(f"Do you have a target time or target pace, {name}?")
+        print(f"Do you have a target race time or target race pace, {name}?")
         print("-" * 40)
         print("1: I have a target finish time")
         print("2: I have a target pace")
