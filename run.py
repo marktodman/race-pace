@@ -107,10 +107,10 @@ def get_runner_distance(name):
             print_input_text("You selected '10km'!")
             return "10km"
         elif choice == 4:
-            print_input_text("You selected '5km'!")
+            print_error_text("You selected '5km'!")
             return "5km"
         elif choice == 5:
-            print_input_text("OK, the programme will now exit - BYE!")
+            print_error_text("OK, the programme will now exit - BYE!")
             time.sleep(1)
             exit()
         else:
@@ -145,11 +145,11 @@ def get_runner_units(name):
             print_input_text("You selected 'Mile'")
             return "mile"
         elif choice == 3:
-            print_input_text("You selected 'Restart', so the program will restart")
+            print_error_text("You selected 'Restart', so the program will restart")
             time.sleep(1)
             main()
         elif choice == 4:
-            print_input_text("OK, the programme will now exit - BYE!")
+            print_error_text("OK, the programme will now exit - BYE!")
             time.sleep(1)
             exit()
         else:
@@ -184,11 +184,11 @@ def choose_pace_time(name):
             print_input_text("You selected 'target pace'")
             return "race_pace"
         elif choice == 3:
-            print_input_text("You selected 'Restart', so the program will restart")
+            print_error_text("You selected 'Restart', so the program will restart")
             time.sleep(1)
             main()
         elif choice == 4:
-            print_input_text("OK, the programme will now exit - BYE!")
+            print_error_text("OK, the programme will now exit - BYE!")
             time.sleep(1)
             exit()
         else:
@@ -289,6 +289,20 @@ def calculate_pace(name, distance_str, distance_num, race_time, unit):
     print("-" * 40)
 
 
+def start_again(name):
+    """
+    Gives the user the option to calculate another race time or pace.
+    """
+    decision = input(f"Would you like to use Race Pace for another race, {name}? Enter 'y' or 'n' ")
+    if decision.lower() == 'y' or decision.lower() == 'yes':
+        main()
+    else:
+        print_input_text(f"OK, {name}, thank you for using Race Pace. Go well!")
+        print_error_text("Race Pace will now exit...")
+        time.sleep(3)
+        exit()
+
+
 def main():
     """
     Runs the functions for the main program.
@@ -318,9 +332,8 @@ def main():
         time.sleep(1)
         cls()
         race_finish_pace = calculate_pace(runner_name, runner_distance, dist_converted, race_time, runner_units)
-    # Need to put in option to start again and exit
-    # Need to validate inputs!
-    # Show splits using dictionary
+    time.sleep(3)
+    start_again(runner_name)
 
 
 print(colored(headline_font.renderText("RACE PACE"), 'green', 'on_white'))
