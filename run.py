@@ -72,7 +72,7 @@ def get_runner_name():
     """
     while True:
         print("-" * 40)
-        runner_name = input("Please enter your name: \n")
+        runner_name = input("Please enter your first name: \n")
         if runner_name.isalpha():
             print(f"\nHi {runner_name}, please tell me more about your race...\n")
             return runner_name
@@ -113,7 +113,7 @@ def get_runner_distance(name):
             print_error_text("You selected '5km'!")
             return "5km"
         elif choice == 5:
-            print_error_text("OK, the programme will now exit - BYE!")
+            print_error_text("OK, the program will now exit - BYE!")
             time.sleep(1)
             exit()
         else:
@@ -152,7 +152,7 @@ def get_runner_units(name):
             time.sleep(1)
             main()
         elif choice == 4:
-            print_error_text("OK, the programme will now exit - BYE!")
+            print_error_text("OK, the program will now exit - BYE!")
             time.sleep(1)
             exit()
         else:
@@ -191,7 +191,7 @@ def choose_pace_time(name):
             time.sleep(1)
             main()
         elif choice == 4:
-            print_error_text("OK, the programme will now exit - BYE!")
+            print_error_text("OK, the program will now exit - BYE!")
             time.sleep(1)
             exit()
         else:
