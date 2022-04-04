@@ -200,15 +200,19 @@ def get_pace(name, distance_str, unit):
     """
     Gets the runner's pace used to calculate estimated finish time.
     """
-    print(f"So {name} let's calculate your estimated {distance_str} time")
-    print("To do this we need to know your running pace\n")
-    print(f"How long does it take you to run 1 {unit}?\n")
-    print("Please input in the format M:SS or MM:SS, e.g. 6:30 or 10:05")
-    race_pace = input(f"Enter your time for 1 {unit}: ")
-    print_input_text(f"You entered {race_pace}")
-    print("Is that correct?")
-
-    return race_pace
+    while True:
+        timeformat = "%M:%S"
+        print(f"So {name} let's calculate your estimated {distance_str} time")
+        print("To do this we need to know your running pace\n")
+        print(f"How long does it take you to run 1 {unit}?\n")
+        print("Please input in the format M:SS or MM:SS, e.g. 6:30 or 10:05")
+        race_pace = input(f"Enter your time for 1 {unit}: ")
+        try:
+            valid_time = datetime.datetime.strptime(race_pace, timeformat)
+            print_input_text(f"You entered {race_pace}")
+            return race_pace
+        except ValueError:
+            print_error_text("Invalid option. Please enter time in the format MM:SS.\n")
 
 
 def get_time(name, distance_str):
@@ -224,6 +228,7 @@ def get_time(name, distance_str):
         race_time = input(f"Enter your target time for the {distance_str}: ")
         try:
             valid_time = datetime.datetime.strptime(race_time, timeformat)
+            print_input_text(f"You entered {race_time}")
             return race_time
         except ValueError:
             print_error_text("Invalid option. Please enter time in the format H:MM:SS.\n")
