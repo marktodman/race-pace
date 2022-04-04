@@ -5,6 +5,7 @@ from math import modf
 from termcolor import colored, cprint
 from pyfiglet import Figlet
 
+f = Figlet(font='speed')
 
 class Runner:
     """
@@ -42,7 +43,6 @@ def cls():
 
     os.system('cls' if os.name == 'nt' else 'clear')
 
-
 def get_runner_name():
     """
     Gets the runner's name.
@@ -50,6 +50,7 @@ def get_runner_name():
     print("-" * 40)
     runner_name = input("Please enter your name: ")
     print(f"\nHi {runner_name}, please tell me more about your race...\n")
+
     return runner_name
 
 
@@ -57,68 +58,77 @@ def get_runner_distance(name):
     """
     Gets the runner's distance from a menu to avoid typing errors.
     """
-    print(f"What distance is your race, {name}?")
-    print("-" * 40)
-    print("1: Marathon")
-    print("2: Half Marathon")
-    print("3: 10km")
-    print("4: 5km")
-    print("5: Exit")
-    print("-" * 40)
-    print("Please input only the option number, e.g. input '4' for 5km")
-    choice = int(input("Enter your distance: "))
-
-    if choice == 1:
-        print("You selected 'Marathon' - going long!")
-        return "Marathon"
-    elif choice == 2:
-        print("You selected 'Half Marathon'!")
-        return "Half Marathon"
-    elif choice == 3:
-        print("You selected '10km'!")
-        return "10km"
-    elif choice == 4:
-        print("You selected '5km'!")
-        return "5km"
-    elif choice == 5:
-        print("OK, the programme will now exit - BYE!")
-        exit()
-    else:
-        print("Invalid option. Please enter a number between 1 and 5.")
-        print('-' * 40)
-        # get_runner_distance()
-
+    while True:
+        print(f"What distance is your race, {name}?")
+        print("-" * 40)
+        print("1: Marathon")
+        print("2: Half Marathon")
+        print("3: 10km")
+        print("4: 5km")
+        print("5: Exit")
+        print("-" * 40)
+        print("Please input only the option number, e.g. input '4' for 5km")
+        choice = ""
+        try:
+            choice = int(input("Enter your distance: "))
+        except:
+            print_error_text("Wrong input type...")
+                
+        if choice == 1:
+            print("You selected 'Marathon' - going long!")
+            return "Marathon"
+        elif choice == 2:
+            print("You selected 'Half Marathon'!")
+            return "Half Marathon"
+        elif choice == 3:
+            print("You selected '10km'!")
+            return "10km"
+        elif choice == 4:
+            print("You selected '5km'!")
+            return "5km"
+        elif choice == 5:
+            print("OK, the programme will now exit - BYE!")
+            exit()
+        else:
+            print("Invalid option. Please enter a number between 1 and 5.\n")
+            print('-' * 40)
+            
 
 def get_runner_units(name):
     """
     Gets the runner's choice of units - kilometers or miles - from a menu
     to avoid typing errors.
     """
-    print(f"Would you prefer to use miles or kilometers, {name}?")
-    print("-" * 40)
-    print("1: Kilometer")
-    print("2: Mile")
-    print("3: Restart")
-    print("4: Exit")
-    print("-" * 40)
-    print("Please input only the number, e.g. input '2' for miles")
-    choice = int(input("Enter your preference: "))
+    while True:
+        print(f"Would you prefer to use miles or kilometers, {name}?")
+        print("-" * 40)
+        print("1: Kilometer")
+        print("2: Mile")
+        print("3: Restart")
+        print("4: Exit")
+        print("-" * 40)
+        print("Please input only the number, e.g. input '2' for miles")
+        choice = ""
+        try:
+            choice = int(input("Enter your preference: "))
+        except:
+            print(colored("Wrong input type..."), 'red', 'on_white')
 
-    if choice == 1:
-        print("You selected 'Kilometer'")
-        return "km"
-    elif choice == 2:
-        print("You selected 'Mile'")
-        return "mile"
-    elif choice == 3:
-        print("You selected 'Restart', so the program will restart")
-        main()
-    elif choice == 4:
-        print("OK, the programme will now exit - BYE!")
-        exit()
-    else:
-        print("Invalid option. Please enter a number between 1 and 5.")
-        print('-' * 40)
+        if choice == 1:
+            print("You selected 'Kilometer'")
+            return "km"
+        elif choice == 2:
+            print("You selected 'Mile'")
+            return "mile"
+        elif choice == 3:
+            print("You selected 'Restart', so the program will restart")
+            main()
+        elif choice == 4:
+            print("OK, the programme will now exit - BYE!")
+            exit()
+        else:
+            print("Invalid option. Please enter a number between 1 and 5.")
+            print('-' * 40)
 
 
 def choose_pace_time(name):
@@ -157,7 +167,7 @@ def get_pace(name, distance_str, unit):
     """
     Gets the runner's pace used to calculate estimated finish time.
     """
-    print(f"So {name} let's calculate your esitmated {distance_str} time")
+    print(f"So {name} let's calculate your estimated {distance_str} time")
     print("To do this we need to know your running pace\n")
     print(f"How long does it take you to run 1 {unit}?\n")
     print("Please input in the format MM:SS, e.g. 06:30")
@@ -269,11 +279,8 @@ def main():
     # Need to validate inputs!
     # Show splits using dictionary
 
-print_green = lambda x: cprint(x, 'green')
-print_blue_on_white = lambda x: cprint(x, 'blue', 'on_white')
-f = Figlet(font='speed')
 
-print(f.renderText("RACE PACE"))
+print(colored(f.renderText("RACE PACE"), 'green', 'on_white'))
 print("-" * 40)
 print("Welcome to the Race Pace Calculator.")
 print("We will help you smash a PR in your next race!")
