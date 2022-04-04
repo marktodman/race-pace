@@ -5,7 +5,8 @@ from math import modf
 from termcolor import colored, cprint
 from pyfiglet import Figlet
 
-f = Figlet(font='speed')
+headline_font = Figlet(font='speed')
+
 
 class Runner:
     """
@@ -53,6 +54,7 @@ def print_error_text(text):
 
     return error_text
 
+
 def print_input_text(text):
     """
     Prints green on white text used in input confirmation messages.
@@ -91,9 +93,9 @@ def get_runner_distance(name):
         choice = ""
         try:
             choice = int(input("Enter your distance: "))
-        except:
+        except ValueError:
             print_error_text("Wrong input type...")
-                
+
         if choice == 1:
             print_input_text("You selected 'Marathon' - going long!")
             return "Marathon"
@@ -132,7 +134,7 @@ def get_runner_units(name):
         choice = ""
         try:
             choice = int(input("Enter your preference: "))
-        except:
+        except ValueError:
             print_error_text("Wrong input type...")
 
         if choice == 1:
@@ -171,7 +173,7 @@ def choose_pace_time(name):
         choice = ""
         try:
             choice = int(input("Enter your preference: "))
-        except:
+        except ValueError:
             print_error_text("Wrong input type...")
 
         if choice == 1:
@@ -200,12 +202,13 @@ def get_pace(name, distance_str, unit):
     print(f"So {name} let's calculate your estimated {distance_str} time")
     print("To do this we need to know your running pace\n")
     print(f"How long does it take you to run 1 {unit}?\n")
-    print("Please input in the format MM:SS, e.g. 06:30")
+    print("Please input in the format M:SS or MM:SS, e.g. 6:30 or 10:05")
     race_pace = input(f"Enter your time for 1 {unit}: ")
     print_input_text(f"You entered {race_pace}")
-    # print("Is that correct?")
+    print("Is that correct?")
 
     return race_pace
+
 
 def get_time(name, distance_str):
     """
@@ -217,7 +220,7 @@ def get_time(name, distance_str):
     print("Please input in the format H:MM:SS, e.g. 1:02:00")
     race_time = input(f"Enter your target time for the {distance_str}: ")
     print_input_text(f"You entered {race_time}")
-    # print("Is that correct?")
+    print("Is that correct?")
 
     return race_time
 
@@ -260,7 +263,7 @@ def calculate_pace(name, distance_str, distance_num, race_time, unit):
 
     total_secs = (hrs * 3600) + (mins * 60) + secs
 
-    pace_total_secs = total_secs / distance_num 
+    pace_total_secs = total_secs / distance_num
 
     pace_mins_float = pace_total_secs / 60
     s, m = modf(pace_mins_float)
@@ -311,7 +314,7 @@ def main():
     # Show splits using dictionary
 
 
-print(colored(f.renderText("RACE PACE"), 'green', 'on_white'))
+print(colored(headline_font.renderText("RACE PACE"), 'green', 'on_white'))
 print("-" * 40)
 print("Welcome to the Race Pace Calculator.")
 print("We will help you smash a PR in your next race!")
