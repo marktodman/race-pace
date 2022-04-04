@@ -129,8 +129,8 @@ def get_runner_units(name):
     while True:
         print(f"Would you prefer to use miles or kilometers, {name}?")
         print("-" * 40)
-        print("1: Kilometer")
-        print("2: Mile")
+        print("1: Kilometers")
+        print("2: Miles")
         print("3: Restart")
         print("4: Exit")
         print("-" * 40)
@@ -142,10 +142,10 @@ def get_runner_units(name):
             print_error_text("Wrong input type...")
 
         if choice == 1:
-            print_input_text("You selected 'Kilometer'")
+            print_input_text("You selected 'Kilometers'")
             return "km"
         elif choice == 2:
-            print_input_text("You selected 'Mile'")
+            print_input_text("You selected 'Miles'")
             return "mile"
         elif choice == 3:
             print_error_text("You selected 'Restart', so the program will restart")
@@ -296,14 +296,20 @@ def start_again(name):
     """
     Gives the user the option to calculate another race time or pace.
     """
-    decision = input(f"Would you like to use Race Pace for another race, {name}? Enter 'y' or 'n' ")
-    if decision.lower() == 'y' or decision.lower() == 'yes':
-        main()
-    else:
-        print_input_text(f"OK, {name}, thank you for using Race Pace. Go well!")
-        print_error_text("Race Pace will now exit...")
-        time.sleep(3)
-        exit()
+    while True:
+        decision = input(f"Would you like to use Race Pace for another race, {name}? Enter 'y' or 'n' ")
+        if decision.isalpha():
+            if decision.lower() == 'y' or decision.lower() == 'yes':
+                main()
+            elif decision.lower() == 'n' or decision.lower() == 'no':
+                print_input_text(f"OK, {name}, thank you for using Race Pace. Go well!")
+                print_error_text("Race Pace will now exit...")
+                time.sleep(3)
+                exit()
+            else:
+                print_error_text("Invalid option. Please enter 'y' or 'n'...\n")
+        else:
+            print_error_text("Invalid option. Please enter 'y' or 'n'...\n")
 
 
 def main():
