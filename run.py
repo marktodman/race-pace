@@ -308,7 +308,7 @@ def calc_splits(unit, distance_num, pace, distance_str, name):
 
     if distance_str == 'Marathon':
         num_splits = int(distance_num // 3)
-        split_distance = [(i * 2 + 2) for i in range(num_splits)]
+        split_distance = [(i * 3 + 3) for i in range(num_splits)]
     elif distance_str == 'Half Marathon':
         num_splits = int(distance_num // 2)
         split_distance = [(i * 2 + 2) for i in range(num_splits)]
