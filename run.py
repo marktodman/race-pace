@@ -305,8 +305,11 @@ def calc_splits(unit, distance_num, pace, distance_str, name):
     Calculates the runner's split distances based on the race length.
     """
     split_distance = []
-    
-    if distance_str == 'Marathon' or distance_str == 'Half Marathon':
+
+    if distance_str == 'Marathon':
+        num_splits = int(distance_num // 3)
+        split_distance = [(i * 2 + 2) for i in range(num_splits)]
+    elif distance_str == 'Half Marathon':
         num_splits = int(distance_num // 2)
         split_distance = [(i * 2 + 2) for i in range(num_splits)]
     else:
