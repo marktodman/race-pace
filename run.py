@@ -112,7 +112,7 @@ def get_runner_distance(name):
             print_input_text("You selected '5km'!")
             return "5km"
         elif choice == 5:
-            print_error_text("OK, the program will now exit - BYE!")
+            print_error_text("OK, Race Pace will now exit - BYE!")
             time.sleep(1)
             exit()
         else:
@@ -151,7 +151,7 @@ def get_runner_units(name):
             time.sleep(1)
             main()
         elif choice == 4:
-            print_error_text("OK, the program will now exit - BYE!")
+            print_error_text("OK, Race Pace will now exit - BYE!")
             time.sleep(1)
             exit()
         else:
@@ -190,7 +190,7 @@ def choose_pace_time(name):
             time.sleep(1)
             main()
         elif choice == 4:
-            print_error_text("OK, the program will now exit - BYE!")
+            print_error_text("OK, Race Pace will now exit - BYE!")
             time.sleep(1)
             exit()
         else:
@@ -236,7 +236,7 @@ def get_time(name, distance_str):
             print_error_text("Invalid option. Please enter time in the format H:MM:SS.\n")
 
 
-def calculate_time(name, distance_str, distance_num, race_pace):
+def calc_time(name, distance_str, distance_num, race_pace):
     """
     Calculates target time for given race length based on runner pace.
     """
@@ -252,20 +252,24 @@ def calculate_time(name, distance_str, distance_num, race_pace):
     float_mins = time_over / 60
     s, m = modf(float_mins)
     minutes = int(m)
+    if minutes < 10:
+        min_str = "0" + str(minutes)
+    else:
+        min_str = str(minutes)
     seconds = int(s * 60)
     if seconds < 10:
         sec_str = "0" + str(seconds)
     else:
         sec_str = str(seconds)
-    finish_time = str(hours) + ":" + str(minutes) + ":" + sec_str
-    print_input_text(f"You should complete your {distance_str} in {finish_time}\n")
-    print_input_text(f"Go well in your race, {name}!")
+    finish_time = str(hours) + ":" + min_str + ":" + sec_str
+    print_input_text(f"You should complete your {distance_str} in {finish_time}")
     print("-" * 40)
 
 
-def calculate_pace(name, distance_str, distance_num, race_time, unit):
+def calc_pace(name, distance_str, distance_num, race_time, unit):
     """
-    Calculates target pace for given race length based on runner target finish time.
+    Calculates target pace for given race length based on runner 
+    target finish time.
     """
     split_time = race_time.split(":")
     hrs = int(split_time[0])
@@ -279,14 +283,71 @@ def calculate_pace(name, distance_str, distance_num, race_time, unit):
     pace_mins_float = pace_total_secs / 60
     s, m = modf(pace_mins_float)
     minutes = int(m)
+    if minutes < 10:
+        min_str = "0" + str(minutes)
+    else:
+        min_str = str(minutes)
     seconds = int(s * 60)
     if seconds < 10:
         sec_str = "0" + str(seconds)
     else:
         sec_str = str(seconds)
 
-    target_pace = str(minutes) + ":" + sec_str
-    print_input_text(f"You need to run {target_pace} per {unit} to finish in {race_time}\n")
+    target_pace = min_str + ":" + sec_str
+    print_input_text(f"You need to run {target_pace} per {unit} to finish in {race_time}")
+    print("-" * 40)
+
+    return target_pace
+
+
+def calc_splits(unit, distance_num, pace, distance_str, name):
+    """
+    Calculates the runner's split distances based on the race length.
+    """
+    split_distance = []
+    
+    if distance_str == 'Marathon' or distance_str == 'Half Marathon':
+        num_splits = int(distance_num // 2)
+        split_distance = [(i * 2 + 2) for i in range(num_splits)]
+    else:
+        num_splits = int(distance_num // 1)
+        split_distance = [(i + 1) for i in range(num_splits)]
+
+    split_time = []
+
+    for i in split_distance:
+        split_pace = pace.split(":")
+        mins = int(split_pace[0])
+        secs = int(split_pace[1])
+        pace_secs = mins * 60 + secs
+
+        time_to_split = pace_secs * i
+
+        hours = int(time_to_split // 3600)
+        time_over = math.fmod(time_to_split, 3600)
+        float_mins = time_over / 60
+        s, m = modf(float_mins)
+        minutes = int(m)
+        if minutes < 10:
+            min_str = "0" + str(minutes)
+        else:
+            min_str = str(minutes)
+        seconds = int(s * 60)
+        if seconds < 10:
+            sec_str = "0" + str(seconds)
+        else:
+            sec_str = str(seconds)
+        split = str(hours) + ":" + min_str + ":" + sec_str
+        split_time.append(split)
+
+    print(f"Here are some splits to help with your {distance_str} pacing")
+    print(f"You should be passing these {unit} markers at these times:\n")
+    print(f"{unit} // split time")
+
+    splits = dict(zip(split_distance, split_time))
+    for distance, time in splits.items():
+        print(distance, time)
+    print("-" * 40)
     print_input_text(f"Go well in your race, {name}!")
     print("-" * 40)
 
@@ -334,12 +395,14 @@ def main():
         race_pace = get_pace(runner_name, runner_distance, runner_units)
         time.sleep(1)
         cls()
-        race_finish_time = calculate_time(runner_name, runner_distance, dist_converted, race_pace)
+        race_finish_time = calc_time(runner_name, runner_distance, dist_converted, race_pace)
+        splits = calc_splits(runner_units, dist_converted, race_pace, runner_distance, runner_name)
     else:
         race_time = get_time(runner_name, runner_distance)
         time.sleep(1)
         cls()
-        race_finish_pace = calculate_pace(runner_name, runner_distance, dist_converted, race_time, runner_units)
+        race_finish_pace = calc_pace(runner_name, runner_distance, dist_converted, race_time, runner_units)
+        splits = calc_splits(runner_units, dist_converted, race_finish_pace, runner_distance, runner_name)
     time.sleep(3)
     start_again(runner_name)
 
