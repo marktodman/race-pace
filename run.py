@@ -57,13 +57,22 @@ def print_error_text(text):
 
 def print_input_text(text):
     """
-    Prints green on white text used in input confirmation messages.
+    Prints blue on white text used in input confirmation messages.
     """
-    formatted_text = colored(text, 'green', 'on_white')
+    formatted_text = colored(text, 'blue', 'on_white')
     input_text = print(formatted_text)
 
     return input_text
 
+
+def print_output_text(text):
+    """
+    Prints green on white text used in input confirmation messages.
+    """
+    formatted_text = colored(text, 'green', 'on_white')
+    output_text = print(formatted_text)
+
+    return output_text
 
 def get_runner_name():
     """
@@ -214,7 +223,7 @@ def get_pace(name, distance_str, unit):
             print_input_text(f"You entered {race_pace}")
             return race_pace
         except ValueError:
-            print_error_text("Invalid option. Please enter time in the format MM:SS.\n")
+            print_error_text("Invalid option. Please enter time in the format M:SS or MM:SS.\n")
 
 
 def get_time(name, distance_str):
@@ -262,14 +271,14 @@ def calc_time(name, distance_str, distance_num, race_pace):
     else:
         sec_str = str(seconds)
     finish_time = str(hours) + ":" + min_str + ":" + sec_str
-    print_input_text(f"You should complete your {distance_str} in {finish_time}")
+    print("-" * 40)
+    print_output_text(f"You should complete your {distance_str} in {finish_time}")
     print("-" * 40)
 
 
 def calc_pace(name, distance_str, distance_num, race_time, unit):
     """
-    Calculates target pace for given race length based on runner 
-    target finish time.
+    Calculates target pace for given race length based on runner target finish time.
     """
     split_time = race_time.split(":")
     hrs = int(split_time[0])
@@ -294,7 +303,8 @@ def calc_pace(name, distance_str, distance_num, race_time, unit):
         sec_str = str(seconds)
 
     target_pace = min_str + ":" + sec_str
-    print_input_text(f"You need to run {target_pace} per {unit} to finish in {race_time}")
+    print("-" * 40)
+    print_output_text(f"You need to run {target_pace} per {unit} to finish in {race_time}")
     print("-" * 40)
 
     return target_pace
@@ -351,7 +361,7 @@ def calc_splits(unit, distance_num, pace, distance_str, name):
     for distance, time in splits.items():
         print(distance, time)
     print("-" * 40)
-    print_input_text(f"Go well in your race, {name}!")
+    print_output_text(f"Go well in your race, {name}!")
     print("-" * 40)
 
 
@@ -365,7 +375,7 @@ def start_again(name):
             if decision.lower() == 'y' or decision.lower() == 'yes':
                 main()
             elif decision.lower() == 'n' or decision.lower() == 'no':
-                print_input_text(f"OK, {name}, thank you for using Race Pace. Go well!")
+                print_output_text(f"OK, {name}, thank you for using Race Pace. Go well!")
                 print_error_text("Race Pace will now exit...")
                 time.sleep(3)
                 exit()
