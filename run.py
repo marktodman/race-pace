@@ -45,7 +45,7 @@ def cls():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-def print_error_text(text):
+def error_text(text):
     """
     Prints red on white text used in error messages.
     """
@@ -55,7 +55,7 @@ def print_error_text(text):
     return error_text
 
 
-def print_input_text(text):
+def input_text(text):
     """
     Prints blue on white text used in input confirmation messages.
     """
@@ -65,7 +65,7 @@ def print_input_text(text):
     return input_text
 
 
-def print_output_text(text):
+def output_text(text):
     """
     Prints green on white text used in input confirmation messages.
     """
@@ -74,7 +74,8 @@ def print_output_text(text):
 
     return output_text
 
-def get_runner_name():
+
+def runner_name():
     """
     Gets the runner's name.
     """
@@ -82,13 +83,13 @@ def get_runner_name():
         print("-" * 40)
         runner_name = input("Please enter your first name: \n")
         if runner_name.isalpha():
-            print(f"\nHi {runner_name}, please tell me more about your race...\n")
+            print(f"\nHi {runner_name}, please tell me about your race...\n")
             return runner_name
         else:
-            print_error_text("Invalid option. Please enter your name...\n")
+            error_text("Invalid option. Please enter your name...\n")
 
 
-def get_runner_distance(name):
+def runner_distance(name):
     """
     Gets the runner's distance from a menu to avoid typing errors.
     """
@@ -106,30 +107,30 @@ def get_runner_distance(name):
         try:
             choice = int(input("Enter your distance: \n"))
         except ValueError:
-            print_error_text("Wrong input type...")
+            error_text("Wrong input type...")
 
         if choice == 1:
-            print_input_text("You selected 'Marathon' - going long!")
+            input_text("You selected 'Marathon' - going long!")
             return "Marathon"
         elif choice == 2:
-            print_input_text("You selected 'Half Marathon'!")
+            input_text("You selected 'Half Marathon'!")
             return "Half Marathon"
         elif choice == 3:
-            print_input_text("You selected '10km'!")
+            input_text("You selected '10km'!")
             return "10km"
         elif choice == 4:
-            print_input_text("You selected '5km'!")
+            input_text("You selected '5km'!")
             return "5km"
         elif choice == 5:
-            print_error_text("OK, Race Pace will now exit - BYE!")
+            error_text("OK, Race Pace will now exit - BYE!")
             time.sleep(1)
             exit()
         else:
-            print_error_text("Invalid option. Please enter a number between 1 and 5.\n")
+            error_text("Invalid. Please enter a number between 1 and 5.\n")
             print('-' * 40)
 
 
-def get_runner_units(name):
+def runner_units(name):
     """
     Gets the runner's choice of units - kilometers or miles - from a menu
     to avoid typing errors.
@@ -147,24 +148,24 @@ def get_runner_units(name):
         try:
             choice = int(input("Enter your preference: \n"))
         except ValueError:
-            print_error_text("Wrong input type...")
+            error_text("Wrong input type...")
 
         if choice == 1:
-            print_input_text("You selected 'Kilometers'")
+            input_text("You selected 'Kilometers'")
             return "km"
         elif choice == 2:
-            print_input_text("You selected 'Miles'")
+            input_text("You selected 'Miles'")
             return "mile"
         elif choice == 3:
-            print_error_text("You selected 'Restart', so the program will restart")
+            error_text("You selected 'Restart', so the program will restart")
             time.sleep(1)
             main()
         elif choice == 4:
-            print_error_text("OK, Race Pace will now exit - BYE!")
+            error_text("OK, Race Pace will now exit - BYE!")
             time.sleep(1)
             exit()
         else:
-            print_error_text("Invalid option. Please enter a number between 1 and 5.\n")
+            error_text("Invalid. Please enter a number between 1 and 5.\n")
             print('-' * 40)
 
 
@@ -186,24 +187,24 @@ def choose_pace_time(name):
         try:
             choice = int(input("Enter your preference: \n"))
         except ValueError:
-            print_error_text("Wrong input type...")
+            error_text("Wrong input type...")
 
         if choice == 1:
-            print_input_text("You selected 'target finish time'")
+            input_text("You selected 'target finish time'")
             return "race_time"
         elif choice == 2:
-            print_input_text("You selected 'target pace'")
+            input_text("You selected 'target pace'")
             return "race_pace"
         elif choice == 3:
-            print_error_text("You selected 'Restart', so the program will restart")
+            error_text("You selected 'Restart', so the program will restart")
             time.sleep(1)
             main()
         elif choice == 4:
-            print_error_text("OK, Race Pace will now exit - BYE!")
+            error_text("OK, Race Pace will now exit - BYE!")
             time.sleep(1)
             exit()
         else:
-            print_error_text("Invalid option. Please enter a number between 1 and 5.\n")
+            error_text("Invalid. Please enter a number between 1 and 5.\n")
             print('-' * 40)
 
 
@@ -220,10 +221,10 @@ def get_pace(name, distance_str, unit):
         race_pace = input(f"Enter your time for 1 {unit}: \n")
         try:
             valid_time = datetime.datetime.strptime(race_pace, timeformat)
-            print_input_text(f"You entered {race_pace}")
+            input_text(f"You entered {race_pace}")
             return race_pace
         except ValueError:
-            print_error_text("Invalid option. Please enter time in the format M:SS or MM:SS.\n")
+            error_text("Invalid. Please use the format M:SS or MM:SS.\n")
 
 
 def get_time(name, distance_str):
@@ -233,16 +234,16 @@ def get_time(name, distance_str):
     while True:
         timeformat = "%H:%M:%S"
         print(f"So {name} let's calculate your required pace")
-        print(f"To do this we need to know your target {distance_str} finish time\n")
+        print(f"What is your target {distance_str} finish time?\n")
         print(f"What is your target time for the {distance_str}?\n")
         print("Please input in the format H:MM:SS, e.g. 1:02:00")
         race_time = input(f"Enter your target time for the {distance_str}: \n")
         try:
             valid_time = datetime.datetime.strptime(race_time, timeformat)
-            print_input_text(f"You entered {race_time}")
+            input_text(f"You entered {race_time}")
             return race_time
         except ValueError:
-            print_error_text("Invalid option. Please enter time in the format H:MM:SS.\n")
+            error_text("Invalid. Please enter time in the format H:MM:SS.\n")
 
 
 def calc_time(name, distance_str, distance_num, race_pace):
@@ -272,13 +273,13 @@ def calc_time(name, distance_str, distance_num, race_pace):
         sec_str = str(seconds)
     finish_time = str(hours) + ":" + min_str + ":" + sec_str
     print("-" * 40)
-    print_output_text(f"You should complete your {distance_str} in {finish_time}")
+    output_text(f"You should complete your {distance_str} in {finish_time}")
     print("-" * 40)
 
 
 def calc_pace(name, distance_str, distance_num, race_time, unit):
     """
-    Calculates target pace for given race length based on runner target finish time.
+    Calculates target pace for race length based on runner target finish time.
     """
     split_time = race_time.split(":")
     hrs = int(split_time[0])
@@ -304,7 +305,8 @@ def calc_pace(name, distance_str, distance_num, race_time, unit):
 
     target_pace = min_str + ":" + sec_str
     print("-" * 40)
-    print_output_text(f"You need to run {target_pace} per {unit} to finish in {race_time}")
+    output_text(f"To acheive your target finish time of {race_time}")
+    output_text(f"You need to run {target_pace} per {unit}")
     print("-" * 40)
 
     return target_pace
@@ -365,7 +367,7 @@ def calc_split_time(split_dist, pace):
 
 def splits(split_dist, split_time, dist_str, unit, name):
     """
-    Presents the user with split times for distances related to their race distance.
+    Present split times for distances related to race distance.
     """
     print(f"Here are some splits to help with your {dist_str} pacing")
     print(f"You should be passing these {unit} markers at these times:\n")
@@ -375,7 +377,7 @@ def splits(split_dist, split_time, dist_str, unit, name):
     for distance, time in splits.items():
         print(distance, time)
     print("-" * 40)
-    print_output_text(f"Go well in your race, {name}!")
+    output_text(f"Go well in your race, {name}!")
     print("-" * 40)
 
 
@@ -384,59 +386,63 @@ def start_again(name):
     Gives the user the option to calculate another race time or pace.
     """
     while True:
-        decision = input(f"Would you like to use Race Pace for another race, {name}? Enter 'y' or 'n' ")
+        print(f"Would you like to use Race Pace again, {name}?")
+        decision = input("Enter 'y' or 'n' \n")
         if decision.isalpha():
             if decision.lower() == 'y' or decision.lower() == 'yes':
                 main()
             elif decision.lower() == 'n' or decision.lower() == 'no':
-                print_output_text(f"OK, {name}, thank you for using Race Pace. Go well!")
-                print_error_text("Race Pace will now exit...")
+                output_text(f"OK, {name}, thank you for using Race Pace!")
+                error_text("Race Pace will now exit...")
                 time.sleep(3)
                 exit()
             else:
-                print_error_text("Invalid option. Please enter 'y' or 'n'...\n")
+                error_text("Invalid. Please enter 'y' or 'n'...\n")
         else:
-            print_error_text("Invalid option. Please enter 'y' or 'n'...\n")
+            error_text("Invalid. Please enter 'y' or 'n'...\n")
 
 
 def main():
     """
     Runs the functions for the main program.
     """
-    runner_name = get_runner_name()
+    r_name = runner_name()
     time.sleep(1)
     cls()
-    runner_distance = get_runner_distance(runner_name)
+    r_dist = runner_distance(r_name)
     time.sleep(1)
     cls()
-    runner_units = get_runner_units(runner_name)
+    r_units = runner_units(r_name)
     time.sleep(1)
     cls()
-    new_runner = Runner(runner_name, runner_distance, runner_units)
+    new_runner = Runner(r_name, r_dist, r_units)
     convert_dist = Runner.get_distance(new_runner)
-    dist_converted = new_runner.distance
-    race_pace_time = choose_pace_time(runner_name)
+    dist_conv = new_runner.distance
+    race_pace_time = choose_pace_time(r_name)
     time.sleep(1)
     cls()
     if race_pace_time == 'race_pace':
-        race_pace = get_pace(runner_name, runner_distance, runner_units)
+        race_pace = get_pace(r_name, r_dist, r_units)
         time.sleep(1)
         cls()
-        race_finish_time = calc_time(runner_name, runner_distance, dist_converted, race_pace)
+        race_finish_time = calc_time(r_name, r_dist, dist_conv, race_pace)
     else:
-        race_time = get_time(runner_name, runner_distance)
+        race_time = get_time(r_name, r_dist)
         time.sleep(1)
         cls()
-        race_pace = calc_pace(runner_name, runner_distance, dist_converted, race_time, runner_units)
-    split_dist = calc_split_dist(dist_converted, runner_distance)
+        race_pace = calc_pace(r_name, r_dist, dist_conv, race_time, r_units)
+    split_dist = calc_split_dist(dist_conv, r_dist)
     split_time = calc_split_time(split_dist, race_pace)
-    race_splits = splits(split_dist, split_time, runner_distance, runner_units, runner_name)
+    race_splits = splits(split_dist, split_time, r_dist, r_units, r_name)
     time.sleep(3)
-    start_again(runner_name)
+    start_again(r_name)
 
 
 print(colored(headline_font.renderText("RACE PACE"), 'green', 'on_white'))
 print("-" * 40)
 print("Welcome to the Race Pace Calculator.")
 print("We will help you smash a PR in your next race!")
+print("Race Pace helps you achieve a goal finish time in your race")
+print("Whether that is a Marathon, Half Marathon, 10km or 5km")
+print("Let's get started...")
 main()
