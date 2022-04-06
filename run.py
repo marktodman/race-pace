@@ -310,25 +310,32 @@ def calc_pace(name, distance_str, distance_num, race_time, unit):
     return target_pace
 
 
-def calc_splits(unit, distance_num, pace, distance_str, name):
+def calc_split_dist(dist_num, dist_str):
     """
     Calculates the runner's split distances based on the race length.
     """
-    split_distance = []
+    split_dist = []
 
-    if distance_str == 'Marathon':
-        num_splits = int(distance_num // 3)
-        split_distance = [(i * 3 + 3) for i in range(num_splits)]
-    elif distance_str == 'Half Marathon':
-        num_splits = int(distance_num // 2)
-        split_distance = [(i * 2 + 2) for i in range(num_splits)]
+    if dist_str == 'Marathon':
+        num_splits = int(dist_num // 3)
+        split_dist = [(i * 3 + 3) for i in range(num_splits)]
+    elif dist_str == 'Half Marathon':
+        num_splits = int(dist_num // 2)
+        split_dist = [(i * 2 + 2) for i in range(num_splits)]
     else:
-        num_splits = int(distance_num // 1)
-        split_distance = [(i + 1) for i in range(num_splits)]
+        num_splits = int(dist_num // 1)
+        split_dist = [(i + 1) for i in range(num_splits)]
 
+    return split_dist
+
+
+def calc_split_time(split_dist, pace):
+    """
+    Calculates the split times for the runner's pace over the race distance.
+    """
     split_time = []
 
-    for i in split_distance:
+    for i in split_dist:
         split_pace = pace.split(":")
         mins = int(split_pace[0])
         secs = int(split_pace[1])
@@ -353,11 +360,18 @@ def calc_splits(unit, distance_num, pace, distance_str, name):
         split = str(hours) + ":" + min_str + ":" + sec_str
         split_time.append(split)
 
-    print(f"Here are some splits to help with your {distance_str} pacing")
+    return split_time
+
+
+def splits(split_dist, split_time, dist_str, unit, name):
+    """
+    Presents the user with split times for distances related to their race distance.
+    """
+    print(f"Here are some splits to help with your {dist_str} pacing")
     print(f"You should be passing these {unit} markers at these times:\n")
     print(f"{unit} // split time")
 
-    splits = dict(zip(split_distance, split_time))
+    splits = dict(zip(split_dist, split_time))
     for distance, time in splits.items():
         print(distance, time)
     print("-" * 40)
@@ -409,13 +423,14 @@ def main():
         time.sleep(1)
         cls()
         race_finish_time = calc_time(runner_name, runner_distance, dist_converted, race_pace)
-        splits = calc_splits(runner_units, dist_converted, race_pace, runner_distance, runner_name)
     else:
         race_time = get_time(runner_name, runner_distance)
         time.sleep(1)
         cls()
-        race_finish_pace = calc_pace(runner_name, runner_distance, dist_converted, race_time, runner_units)
-        splits = calc_splits(runner_units, dist_converted, race_finish_pace, runner_distance, runner_name)
+        race_pace = calc_pace(runner_name, runner_distance, dist_converted, race_time, runner_units)
+    split_dist = calc_split_dist(dist_converted, runner_distance)
+    split_time = calc_split_time(split_dist, race_pace)
+    race_splits = splits(split_dist, split_time, runner_distance, runner_units, runner_name)
     time.sleep(3)
     start_again(runner_name)
 
