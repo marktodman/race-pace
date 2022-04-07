@@ -388,7 +388,10 @@ def start_again(name):
         decision = input("Enter 'y' or 'n' \n")
         if decision.isalpha():
             if decision.lower() == 'y' or decision.lower() == 'yes':
-                main()
+                output_text(f"OK, {name}, Race Pace will start over!")
+                time.sleep(1)
+                cls()
+                run_again(name)
             elif decision.lower() == 'n' or decision.lower() == 'no':
                 output_text(f"OK, {name}, thank you for using Race Pace!")
                 error_text("Race Pace will now exit...")
@@ -398,6 +401,40 @@ def start_again(name):
                 error_text("Invalid. Please enter 'y' or 'n'...\n")
         else:
             error_text("Invalid. Please enter 'y' or 'n'...\n")
+
+
+def run_again(name):
+    """
+    Runs the program again without the name needing to be input
+    """
+    r_name = name
+    r_dist = runner_distance(r_name)
+    time.sleep(1)
+    cls()
+    r_units = runner_units(r_name)
+    time.sleep(1)
+    cls()
+    new_runner = Runner(r_dist, r_units)
+    convert_dist = Runner.get_distance(new_runner)
+    dist_conv = new_runner.distance
+    race_pace_time = choose_pace_time(r_name)
+    time.sleep(1)
+    cls()
+    if race_pace_time == 'race_pace':
+        race_pace = get_pace(r_name, r_dist, r_units)
+        time.sleep(1)
+        cls()
+        race_finish_time = calc_time(r_name, r_dist, dist_conv, race_pace)
+    else:
+        race_time = get_time(r_name, r_dist)
+        time.sleep(1)
+        cls()
+        race_pace = calc_pace(r_name, r_dist, dist_conv, race_time, r_units)
+    split_dist = calc_split_dist(dist_conv, r_dist)
+    split_time = calc_split_time(split_dist, race_pace)
+    race_splits = splits(split_dist, split_time, r_dist, r_units, r_name)
+    time.sleep(3)
+    start_again(r_name)
 
 
 def main():
