@@ -1,8 +1,7 @@
 import os
 import time
 import datetime
-import math
-from math import modf
+from math import modf, fmod
 from termcolor import colored, cprint
 from pyfiglet import Figlet
 
@@ -11,11 +10,10 @@ headline_font = Figlet(font='speed')
 
 class Runner:
     """
-    Defines the runner's name, distance and chosen units
-    to be used in the calculator.
+    Defines the runner's distance as an integer based on users
+    distance and units preference to be used in the calculator.
     """
-    def __init__(self, name, distance, units):
-        self.name = name
+    def __init__(self, distance, units):
         self.units = units
         self.distance = distance
 
@@ -258,7 +256,7 @@ def calc_time(name, distance_str, distance_num, race_pace):
     race_time_secs = pace_secs * distance_num
 
     hours = int(race_time_secs // 3600)
-    time_over = math.fmod(race_time_secs, 3600)
+    time_over = fmod(race_time_secs, 3600)
     float_mins = time_over / 60
     s, m = modf(float_mins)
     minutes = int(m)
@@ -346,7 +344,7 @@ def calc_split_time(split_dist, pace):
         time_to_split = pace_secs * i
 
         hours = int(time_to_split // 3600)
-        time_over = math.fmod(time_to_split, 3600)
+        time_over = fmod(time_to_split, 3600)
         float_mins = time_over / 60
         s, m = modf(float_mins)
         minutes = int(m)
@@ -415,7 +413,7 @@ def main():
     r_units = runner_units(r_name)
     time.sleep(1)
     cls()
-    new_runner = Runner(r_name, r_dist, r_units)
+    new_runner = Runner(r_dist, r_units)
     convert_dist = Runner.get_distance(new_runner)
     dist_conv = new_runner.distance
     race_pace_time = choose_pace_time(r_name)
