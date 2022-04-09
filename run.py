@@ -85,6 +85,8 @@ def runner_name():
             return runner_name
         else:
             error_text("Invalid option. Please enter your name...\n")
+            time.sleep(1)
+            cls()
 
 
 def runner_distance(name):
@@ -125,7 +127,8 @@ def runner_distance(name):
             exit()
         else:
             error_text("Invalid. Please enter a number between 1 and 5.")
-            print('-' * 40)
+            time.sleep(1)
+            cls()
 
 
 def runner_units(name):
@@ -164,7 +167,8 @@ def runner_units(name):
             exit()
         else:
             error_text("Invalid. Please enter a number between 1 and 5.")
-            print('-' * 40)
+            time.sleep(1)
+            cls()
 
 
 def choose_pace_time(name):
@@ -203,7 +207,8 @@ def choose_pace_time(name):
             exit()
         else:
             error_text("Invalid. Please enter a number between 1 and 5.")
-            print('-' * 40)
+            time.sleep(1)
+            cls()
 
 
 def get_pace(name, distance_str, unit):
@@ -223,6 +228,8 @@ def get_pace(name, distance_str, unit):
             return race_pace
         except ValueError:
             error_text("Invalid. Please use the format M:SS or MM:SS.\n")
+            time.sleep(1)
+            cls()
 
 
 def get_time(name, distance_str):
@@ -242,6 +249,8 @@ def get_time(name, distance_str):
             return race_time
         except ValueError:
             error_text("Invalid. Please enter time in the format H:MM:SS.\n")
+            time.sleep(1)
+            cls()
 
 
 def calc_time(name, distance_str, distance_num, race_pace):
@@ -270,7 +279,7 @@ def calc_time(name, distance_str, distance_num, race_pace):
     else:
         sec_str = str(seconds)
     finish_time = str(hours) + ":" + min_str + ":" + sec_str
-    
+
     output_text(f"If you run at a pace of {race_pace}")
     output_text(f"You should complete your {distance_str} in {finish_time}")
 
