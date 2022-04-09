@@ -302,7 +302,6 @@ def calc_pace(name, distance_str, distance_num, race_time, unit):
         sec_str = str(seconds)
 
     target_pace = min_str + ":" + sec_str
-    print("-" * 40)
     output_text(f"To acheive your target finish time of {race_time}")
     output_text(f"You need to run {target_pace} per {unit}")
 
