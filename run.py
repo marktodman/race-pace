@@ -270,9 +270,9 @@ def calc_time(name, distance_str, distance_num, race_pace):
     else:
         sec_str = str(seconds)
     finish_time = str(hours) + ":" + min_str + ":" + sec_str
-    print("-" * 40)
+    
+    output_text(f"If you run at a pace of {race_pace}")
     output_text(f"You should complete your {distance_str} in {finish_time}")
-    print("-" * 40)
 
 
 def calc_pace(name, distance_str, distance_num, race_time, unit):
