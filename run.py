@@ -124,7 +124,7 @@ def runner_distance(name):
             time.sleep(1)
             exit()
         else:
-            error_text("Invalid. Please enter a number between 1 and 5.\n")
+            error_text("Invalid. Please enter a number between 1 and 5.")
             print('-' * 40)
 
 
@@ -163,7 +163,7 @@ def runner_units(name):
             time.sleep(1)
             exit()
         else:
-            error_text("Invalid. Please enter a number between 1 and 5.\n")
+            error_text("Invalid. Please enter a number between 1 and 5.")
             print('-' * 40)
 
 
@@ -202,7 +202,7 @@ def choose_pace_time(name):
             time.sleep(1)
             exit()
         else:
-            error_text("Invalid. Please enter a number between 1 and 5.\n")
+            error_text("Invalid. Please enter a number between 1 and 5.")
             print('-' * 40)
 
 
