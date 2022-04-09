@@ -305,7 +305,6 @@ def calc_pace(name, distance_str, distance_num, race_time, unit):
     print("-" * 40)
     output_text(f"To acheive your target finish time of {race_time}")
     output_text(f"You need to run {target_pace} per {unit}")
-    print("-" * 40)
 
     return target_pace
 
@@ -374,7 +373,7 @@ def splits(split_dist, split_time, dist_str, unit, name):
     splits = dict(zip(split_dist, split_time))
     for distance, time in splits.items():
         print(distance, time)
-    print("-" * 40)
+
     output_text(f"Go well in your race, {name}!")
     print("-" * 40)
 
