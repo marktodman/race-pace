@@ -81,7 +81,7 @@ def runner_name():
         print("-" * 40)
         runner_name = input("Please enter your first name: \n")
         if runner_name.isalpha():
-            output_text(f"\nHi {runner_name}, please tell me about your race...\n")
+            output_text(f"\nHi {runner_name} please tell me about your race\n")
             return runner_name
         else:
             error_text("Invalid option. Please enter your name...\n")
