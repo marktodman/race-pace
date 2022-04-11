@@ -124,6 +124,7 @@ def runner_distance(name):
         elif choice == 5:
             error_text("OK, Race Pace will now exit - BYE!")
             time.sleep(1)
+            cls()
             exit()
         else:
             error_text("Invalid. Please enter a number between 1 and 5.")
@@ -164,6 +165,7 @@ def runner_units(name):
         elif choice == 4:
             error_text("OK, Race Pace will now exit - BYE!")
             time.sleep(1)
+            cls()
             exit()
         else:
             error_text("Invalid. Please enter a number between 1 and 5.")
@@ -204,6 +206,7 @@ def choose_pace_time(name):
         elif choice == 4:
             error_text("OK, Race Pace will now exit - BYE!")
             time.sleep(1)
+            cls()
             exit()
         else:
             error_text("Invalid. Please enter a number between 1 and 5.")
@@ -403,6 +406,7 @@ def start_again(name):
                 output_text(f"OK, {name}, thank you for using Race Pace!")
                 error_text("Race Pace will now exit...")
                 time.sleep(3)
+                cls()
                 exit()
             else:
                 error_text("Invalid. Please enter 'y' or 'n'...\n")
