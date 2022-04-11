@@ -81,7 +81,7 @@ def runner_name():
         print("-" * 40)
         runner_name = input("Please enter your first name: \n")
         if runner_name.isalpha():
-            print(f"\nHi {runner_name}, please tell me about your race...\n")
+            output_text(f"\nHi {runner_name}, please tell me about your race...\n")
             return runner_name
         else:
             error_text("Invalid option. Please enter your name...\n")
@@ -483,8 +483,7 @@ def main():
 print(colored(headline_font.renderText("RACE PACE"), 'green', 'on_white'))
 print("-" * 40)
 print("Welcome to the Race Pace Calculator.")
-print("We will help you smash a PR in your next race!")
 print("Race Pace helps you achieve a goal finish time in your race.")
 print("Whether that is a Marathon, Half Marathon, 10km or 5km.")
-print("Let's get started...")
+print("Let's plan to smash a PR in your next race!")
 main()
