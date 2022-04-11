@@ -241,7 +241,7 @@ def get_time(name, distance_str):
         print(f"So {name} let's calculate your required pace.")
         print("To do this we need to know your target finish time.\n")
         print(f"What is your target finish time for the {distance_str}?\n")
-        print("Please input in the format H:MM:SS, e.g. 1:02:00.")
+        print("Please input in the format H:MM:SS, e.g. 1:02:00 or 0:44:59.")
         race_time = input(f"Enter your target time for the {distance_str}: \n")
         try:
             valid_time = datetime.datetime.strptime(race_time, timeformat)
