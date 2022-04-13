@@ -56,12 +56,26 @@ To personalise the UX, the first stage is for the user to input their first name
 
 ![Example of numeric input error.](assets/images/readme-images/numeric-name-error.png)
 
-The app provides feedback on each input so the user can see their input. This is especially useful in free input. Text that the user has input is printed with blue text on a white background, The user has the chance to 'Restart' if they decide they have made an error at any stage.
+The app provides feedback on each input so the user can see their input. This is especially useful in free text input. Text that the user has input is printed with blue text on a white background, The user has the chance to 'Restart' if they have made an error at any stage.
 
 ![Name input feedback.](assets/images/readme-images/name-input.png)
 
-The app is menu driven to reduce user typograph error and enhance UX. Each menu contains users options which direct the user through a pathway to deliver a race pace, race time and race splits. The menu options provide user choice and control, allowing defensive coding to protect the app and produce the desired output for the user. 'Exit' and 'Restart' options exist on each menu. 'Exit' closes the app. Once closed the user can restart by clicking the 'Start Race Button' which is always present onscreen. 'Restart' starts the app from the beginning, allowing the user to enter a new name and continuing through the menus from the start.
+The app is menu driven to reduce user typograph error and enhance UX. Each menu contains users options which direct the user through a pathway to deliver a race pace, race time and race splits for their chosen distance. The menu options provide user choice and control, allowing defensive coding to protect the app and produce the desired output for the user. 'Exit' and 'Restart' options exist on each menu. 'Exit' closes the app. Once closed the user can restart by clicking the 'Start Race Button' which is always present onscreen. 'Restart' starts the app from the beginning, allowing the user to enter a new name and continuing through the menus from the start.
 
+![The distance option menu.](assets/images/readme-images/distance-menu.png)
 
+![The distance option menu user feedback.](assets/images/readme-images/distance-menu-user-feedback.png)
 
+Only numbers 1 to 5 are accepted as valid input. Numbers outside of this range will generate an error message and the menu will reload. Alpha characters will also generate an error message and the menu will reload. This continues until the user inputs a number between 1 and 5.
 
+![Example error message for an incorrect number.](assets/images/readme-images/distance-menu-num-error.png)
+
+![Example error message for a free text input.](assets/images/readme-images/distance-menu-alpha-error.png)
+
+Once the user has selected their race distance, they are given a choice of whether they prefer to measure in kilometers or miles. This user selection is made once and then the chosen units are used for all calculations.
+
+![The units menu options.](assets/images/readme-images/units-menu.png)
+
+The user is then asked whether they have a target pace or target finish time for their race. This allows the user to chose to calculate the race splits and either finish time (based on pace) or necessary pace (based on target finish time).
+
+![The targets menu options.](assets/images/readme-images/targets-menu.png)
