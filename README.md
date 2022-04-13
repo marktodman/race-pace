@@ -34,6 +34,7 @@ Race Pace will work in either kilometers or miles based on the user's preference
 - Runners who want to improve their race times and race pacing.
 - Coaches working with runners to improve their race times and race pacing.
 
+---
 ## PLANNING
 
 ## User Stories
@@ -87,6 +88,7 @@ The program process flow follows the following high-level steps:
 
 ![Race Pace flow chart.](assets/images/readme-images/race-pace-flow-chart.jpeg)
 
+---
 ## HOW TO USE RACE PACE
 
 Users are guided through screens to generate the pacing information. Race Pace returns personalised information, so the first stage is for the user to input their first name.
@@ -99,6 +101,7 @@ The user can then select whether they have a target finish time and would like t
 
 Once this selection is made Race Pace calculates and returns the finish time and the pace, together with split times for given distance markers in the race.
 
+---
 ## FEATURES
 
 The app is designed to guide the user through the necessary steps to calculate their race pace to acheive their race goals. As the app is hosted in a terminal display, this has been centred on the page. A background image of runners provides context to the app. The RACE PACE title text (named 'speed' on [figlet.org](http://www.figlet.org/fontdb_example.cgi?font=speed.flf)) is coloured in white and green to ephamise that the app is designed for race pacing.
@@ -161,6 +164,7 @@ The display presents the output of the race finish time, race pace and split tim
 
 The user is then asked whether they would like to calculate another race pace. The choice will either restart the process at the distance selection page, retaining the user name, or will exit the application.
 
+---
 ## TESTING
 
 Testing has been undertaken throughout app development.
@@ -193,6 +197,7 @@ The final code has passed through the [W3C HTML Validation Service](https://vali
 
 The final code has passed through the [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Frace-pace-marktodman.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) without any issues.
 
+---
 ## DEPLOYMENT
 
 The Race Pace app is deployed via [GitHub](https://github.com/) and [Heroku](https://www.heroku.com/).
@@ -232,3 +237,32 @@ The site is deployed to [Heroku](https://www.heroku.com) through the following s
 1. Connect the relevant GitHub repository.
 1. Under 'Manual deploy' choose the correct branch and click 'Deploy Branch'. 
 1. Under 'Automatic deploys' you can select 'Automatic Deploys' so that the site updates when updates are pushed to GitHub.
+
+---
+## FUTURE DEVELOPMENT IDEAS
+
+There is an opportunity to enhance the app. The main improvement would be the ability to store and/or download the final output. This could be achieved by adding a Google Sheet to store the final data for user reference.
+
+---
+## CREDITS
+
+The deployment terminal is courtesy of [Code Institute](https://codeinstitute.net/).
+
+[Corey Schafer's excellent YouTube Channel](https://www.youtube.com/c/Coreyms) provided some invaluable Python guidance.
+
+The menu option code was built around information sourced at [computinglearner.com](https://computinglearner.com/how-to-create-a-menu-for-a-python-console-application/).
+
+As always, Stack Overflow was a source of useful information including:
+* [How to set a clear function for the terminal](https://stackoverflow.com/questions/517970/how-to-clear-the-interpreter-console/684344#684344)
+* [How to split the float numbers on the decimal point](https://stackoverflow.com/questions/3454085/in-python-how-do-i-split-a-number-by-the-decimal-point)
+* [How to validate time format](https://stackoverflow.com/questions/33076617/how-to-validate-time-format)
+
+[Python.org](https://www.python.org/) was also useful, particularly with regard to [validating time inputs](https://docs.python.org/2/library/datetime.html#datetime.datetime.strptime).
+
+[Jason Van Schooneveld](https://realpython.com/python-modulo-operator/#author) over at [realpython.com](https://realpython.com/) wrote a helpful article on the [modulo operator](https://realpython.com/python-modulo-operator/).
+
+The background image is free to use courtesy of [Pexels](https://www.pexels.com/photo/crowd-of-male-and-female-runners-2402738/). Thank you to [RUN 4U FFWPU](https://www.pexels.com/@runffwpu) for taking and sharing the picture. The original image was edited by the author to produce the final version used in the site.
+
+Chris Quinn as Mentor at the [Code Institute](https://codeinstitute.net/) provided excellent direction and helped with resources to steer this project to completion. Chris was particularly helpful in providing guidance on on the use of [fonts and color in Python](https://towardsdatascience.com/prettify-your-terminal-text-with-termcolor-and-pyfiglet-880de83fda6b), which in turn led to [Termcolor](https://pypi.org/project/termcolor/) and [Figlet](http://www.figlet.org/).
+
+Thanks to the friends who gave feedback on the app.
