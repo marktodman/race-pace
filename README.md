@@ -12,8 +12,8 @@ The [GitHub repository.](https://github.com/marktodman/race-pace)
 ## OVERVIEW
 
 1. [Race Pace Concept](#Race-Pace-Concept)
-2. [How to use Race Pace](#How-to-use-Race-Pace)
-3. [Planning](#Planning)
+2. [Planning](#Planning)
+3. [How to use Race Pace](#How-to-use-Race-Pace)
 4. [Testing](#Testing)
 5. [Deployment](#Deployment)
 6. [Future Development Ideas](#Future-development-ideas)
@@ -46,7 +46,11 @@ The user can then select whether they have a target finish time and would like t
 
 Once this selection is made Race Pace calculates and returns the finish time and the pace, together with split times for given distance markers in the race.
 
-## Features
+## PLANNING
+
+
+
+## FEATURES
 
 The app is designed to guide the user through the necessary steps to calculate their race pace to acheive their race goals. As the app is hosted in a terminal display, this has been centred on the page. A background image of runners provides context to the app. The RACE PACE title text (named 'speed' on [figlet.org](http://www.figlet.org/fontdb_example.cgi?font=speed.flf)) is coloured in white and green to ephamise that the app is designed for race pacing.
 
@@ -107,3 +111,6 @@ The display presents the output of the race finish time, race pace and split tim
 ![Output based on target pace time and km.](assets/images/readme-images/splits-km-target-pace.png)
 
 The user is then asked whether they would like to calculate another race pace. The choice will either restart the process at the distance selection page, retaining the user name, or will exit the application.
+
+
+

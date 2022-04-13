@@ -471,7 +471,7 @@ def main():
         race_pace = get_pace(r_name, r_dist, r_units)
         time.sleep(1)
         cls()
-        race_finish_time = calc_time(r_name, r_dist, dist_conv, race_pace)
+        race_finish = calc_time(r_name, r_dist, dist_conv, race_pace, r_units)
     else:
         race_time = get_time(r_name, r_dist)
         time.sleep(1)
