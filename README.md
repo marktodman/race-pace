@@ -199,3 +199,36 @@ The Race Pace app is deployed via [GitHub](https://github.com/) and [Heroku](htt
 
 ### GitHub Repository
 
+The code located in a [GitHub repository](https://github.com/marktodman/race-pace).
+
+### Forking the GitHub Repository
+
+To use this code and make changes without affecting the original code, it is possible to 'fork' the code on the GitHub repository through the following steps:
+
+1. Create an account at [GitHub](https://github.com/).
+1. Log into your GitHub account.
+1. Go to the GitHub repository for [Race Pace](https://github.com/marktodman/race-pace).
+1. Click the 'Fork' button in the upper right hand corner of the page.
+1. A copy of the repository will be available in your own repository.
+
+### Heroku Deployment 
+
+The site is deployed to [Heroku](https://www.heroku.com) through the following steps:
+  
+1. Log in to Heroku or create an account if required.
+1. On the Welcome page click the button labeled 'New' in the top right corner, just below the header.
+1. From the drop-down menu select 'Create new app'.
+1. Enter a unique app name. 
+1. Select the relevant geographical region.
+1. Click to 'Create App'.
+1. Navigate to 'Settings' and scroll down to the 'Config Vars' setion. 
+1. Click 'Reveal Config Vars' and enter 'PORT' for the key and '8000' for the value. Then click 'Add'.
+1. Scroll down to the 'Buildpacks' section and click 'Add buildpack'.
+1. Select 'python' and click 'Save Changes'.
+1. Click 'Add buildpack'. Select 'nodejs'.
+1. Check that 'python' is listed above 'nodejs'. This is critical for the app to deploy. If they are not in the correct order, click to drag 'python' to the top of the list.
+1. Click on the 'Deploy' tab
+1. Next to 'Deployment method' select 'GitHub'
+1. Connect the relevant GitHub repository.
+1. Under 'Manual deploy' choose the correct branch and click 'Deploy Branch'. 
+1. Under 'Automatic deploys' you can select 'Automatic Deploys' so that the site updates when updates are pushed to GitHub.
