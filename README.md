@@ -12,12 +12,12 @@ The [GitHub repository.](https://github.com/marktodman/race-pace)
 ## OVERVIEW
 
 1. [Race Pace Concept](#Race-Pace-Concept)
-2. [Planning](#Planning)
-3. [How to use Race Pace](#How-to-use-Race-Pace)
-4. [Testing](#Testing)
-5. [Deployment](#Deployment)
-6. [Future Development Ideas](#Future-development-ideas)
-7. [Credits](#Credits)
+1. [Planning](#Planning)
+1. [How to use Race Pace](#How-to-use-Race-Pace)
+1. [Testing](#Testing)
+1. [Deployment](#Deployment)
+1. [Future Development Ideas](#Future-development-ideas)
+1. [Credits](#Credits)
 
 ## RACE PACE CONCEPT
 
@@ -34,6 +34,59 @@ Race Pace will work in either kilometers or miles based on the user's preference
 - Runners who want to improve their race times and race pacing.
 - Coaches working with runners to improve their race times and race pacing.
 
+## PLANNING
+
+## User Stories
+
+User stories were considered in the application design:
+
+### First Time User
+
+> *"As an experienced runner, I would like to know how fast I should run to  achieve a target time at various race distances"*
+>
+> *"As a novice runner, I would like to know what finish time I will achieve based on my current training pace"*
+>
+> *"As a coach, I would like to calculate paces and finish times to help guide my runners in their races from beginner to expert level"*
+
+### Returning User
+
+> *"As a returning user, I would like to be able to change the race pace or target time"*
+>
+> *"I would like to change the race distance as my experience grows"*
+>
+> *"I would like to be able to see my previous records"*
+
+### Developer
+
+> *"As the app developer, I want to ensure a positive UX through defensive coding"*
+> *"I want to guide the user through the app"*
+> *"I want to produce accurate and meaningful output for the target audience"*
+
+## Aims
+
+The app aims to:
+1. Provide clear instructions to guide the user without the need for further explanation from external sources.
+1. Provide a clear and appropriate response to all user inputs.
+1. Run without crashing due to an error caused by the user's input.
+1. Provide the user with useful race pace information in a clear and helpful display.
+
+## Objectives
+
+To achieve the app aims:
+1. Provide a welcome screen which introduces the app.
+    * Personalise the user experience by requesting the user's first name.
+1. Ensure that all user input provides an appropriate response.
+1. Provide a menu of options where appropriate to reduce likely user error.
+1. Ensure that clear instructions guide user input at each stage.
+1. Provide clear error messages any time the user input is invalid and guide the user to input valid data.
+1. Format text to identify user inputs, system outputs and error messages.
+
+## Program Process Flow
+
+The program process flow follows the following high-level steps:
+
+![Race Pace flow chart.](assets/images/readme-images/race-pace-flow-chart.jpeg)
+
 ## HOW TO USE RACE PACE
 
 Users are guided through screens to generate the pacing information. Race Pace returns personalised information, so the first stage is for the user to input their first name.
@@ -45,32 +98,6 @@ The user selects their prefered units: kilometers or miles. All calculations wil
 The user can then select whether they have a target finish time and would like to calculate the required pace to achieve the target. Or, whether they have a target pace and would like to know what finish time this would produce in their race.
 
 Once this selection is made Race Pace calculates and returns the finish time and the pace, together with split times for given distance markers in the race.
-
-## PLANNING
-
-User stories were considered in the application design:
-
-#### First Time User
-
-> *"As an experienced runner, I would like to know how fast I should run to > achieve a target time at various race distances"*
->
-> *"As a new runner, I would like to know what finish time I will achieve based on my current training pace"*
->
-> *"As a coach, I would like to calculate paces and finish times to help guide my runners"*
-
-#### Returning User
-
-> *"As a returning user, I would like to be able to change the race pace or target time"*
->
-> *"I would like to change the race distance as my experience grows"*
->
-> *"I would like to be able to see my previous records"*
-
-#### Developer
-
-> *"As the app developer, I want to ensure a positive UX through defensive coding"*
-> *"I want to guide the user through the app"*
-> *"I want to produce accurate and meaningful output for the target audience"*
 
 ## FEATURES
 
@@ -134,5 +161,41 @@ The display presents the output of the race finish time, race pace and split tim
 
 The user is then asked whether they would like to calculate another race pace. The choice will either restart the process at the distance selection page, retaining the user name, or will exit the application.
 
+## TESTING
 
+Testing has been undertaken throughout app development.
+
+### Manual Testing
+
+The app has been manually tested throughout development to ensure potential input variations gave the intended response. Manual testing has been undertaken on all variations for each distance including pace, time, miles and kilometers, which generates sixteeen different combinations.
+
+### PEP8 Testing and bug resolution
+
+During app development the code was passed through a PEP8 linter. There were two main issues that required resolution:
+
+1. Some lines of code exceed 80 characters. Solution: shortern code.
+1. Bare except code. Solution: specify the error, which throught this app is ValueError. This makes the app code more robust and means that only specific ValueError issues will be caught by the code.
+1. Issue displaying time format when the returned answer started with zero. Solution: create an if statement to add a zero to the print string when the returned number was less than 10.
+
+There are no remaining bugs.
+
+### PEP8 Validation
+
+The final Python code has passed through [PEP8 online](http://pep8online.com/checkresult) without any issues.
+
+![Results of PEP8 Validation.](assets/images/readme-images/race-pace-pep.png)
+
+## HTML Validation
+
+The final code has passed through the [W3C HTML Validation Service](https://validator.w3.org/nu/?doc=https%3A%2F%2Frace-pace-marktodman.herokuapp.com%2F) without any issues.
+
+## CSS Validation
+
+The final code has passed through the [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Frace-pace-marktodman.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) without any issues.
+
+## DEPLOYMENT
+
+The Race Pace app is deployed via [GitHub](https://github.com/) and [Heroku](https://www.heroku.com/).
+
+### GitHub Repository
 
