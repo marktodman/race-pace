@@ -106,3 +106,4 @@ The display presents the output of the race finish time, race pace and split tim
 
 ![Output based on target pace time and km.](assets/images/readme-images/splits-km-target-pace.png)
 
+The user is then asked whether they would like to calculate another race pace. The choice will either restart the process at the distance selection page, retaining the user name, or will exit the application.
