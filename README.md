@@ -48,7 +48,29 @@ Once this selection is made Race Pace calculates and returns the finish time and
 
 ## PLANNING
 
+User stories were considered in the application design:
 
+#### First Time User
+
+> *"As an experienced runner, I would like to know how fast I should run to > achieve a target time at various race distances"*
+>
+> *"As a new runner, I would like to know what finish time I will achieve based on my current training pace"*
+>
+> *"As a coach, I would like to calculate paces and finish times to help guide my runners"*
+
+#### Returning User
+
+> *"As a returning user, I would like to be able to change the race pace or target time"*
+>
+> *"I would like to change the race distance as my experience grows"*
+>
+> *"I would like to be able to see my previous records"*
+
+#### Developer
+
+> *"As the app developer, I want to ensure a positive UX through defensive coding"*
+> *"I want to guide the user through the app"*
+> *"I want to produce accurate and meaningful output for the target audience"*
 
 ## FEATURES
 
