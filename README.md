@@ -13,10 +13,11 @@ The [GitHub repository.](https://github.com/marktodman/race-pace)
 
 1. [Race Pace Concept](#Race-Pace-Concept)
 2. [How to use Race Pace](#How-to-use-Race-Pace)
-3. [Testing](#Testing)
-4. [Deployment](#Deployment)
-5. [Future Development Ideas](#Future-development-ideas)
-6. [Credits](#Credits)
+3. [Planning](#Planning)
+4. [Testing](#Testing)
+5. [Deployment](#Deployment)
+6. [Future Development Ideas](#Future-development-ideas)
+7. [Credits](#Credits)
 
 ## RACE PACE CONCEPT
 
@@ -46,6 +47,21 @@ The user can then select whether they have a target finish time and would like t
 Once this selection is made Race Pace calculates and returns the finish time and the pace, together with split times for given distance markers in the race.
 
 ## Features
+
+The app is designed to guide the user through the necessary steps to calculate their race pace to acheive their race goals. As the app is hosted in a terminal display, this has been centred on the page. A background image of runners provides context to the app. The RACE PACE title text (named 'speed' on [figlet.org](http://www.figlet.org/fontdb_example.cgi?font=speed.flf)) is coloured in white and green to ephamise that the app is designed for race pacing.
+
+![Screenshot of Race Pace start page.](assets/images/readme-images/race-pace-screenshot.png)
+
+To personalise the UX, the first stage is for the user to input their first name. Only alpha characters are accepted and numbers or blanks will return an error.
+
+![Example of numeric input error.](assets/images/readme-images/numeric-name-error.png)
+
+The app provides feedback on each input so the user can see their input. This is especially useful in free input. Text that the user has input is printed with blue text on a white background, The user has the chance to 'Restart' if they decide they have made an error at any stage.
+
+![Name input feedback.](assets/images/readme-images/name-input.png)
+
+The app is menu driven to reduce user typograph error and enhance UX. Each menu contains users options which direct the user through a pathway to deliver a race pace, race time and race splits. The menu options provide user choice and control, allowing defensive coding to protect the app and produce the desired output for the user. 'Exit' and 'Restart' options exist on each menu. 'Exit' closes the app. Once closed the user can restart by clicking the 'Start Race Button' which is always present onscreen. 'Restart' starts the app from the beginning, allowing the user to enter a new name and continuing through the menus from the start.
+
 
 
 
