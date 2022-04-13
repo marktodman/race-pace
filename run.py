@@ -256,7 +256,7 @@ def get_time(name, distance_str):
             cls()
 
 
-def calc_time(name, distance_str, distance_num, race_pace):
+def calc_time(name, distance_str, distance_num, race_pace, unit):
     """
     Calculates target time for given race length based on runner pace.
     """
@@ -283,7 +283,7 @@ def calc_time(name, distance_str, distance_num, race_pace):
         sec_str = str(seconds)
     finish_time = str(hours) + ":" + min_str + ":" + sec_str
 
-    output_text(f"If you run at a pace of {race_pace}")
+    output_text(f"If you run at a pace of {race_pace} per {unit}")
     output_text(f"You should complete your {distance_str} in {finish_time}")
 
 
@@ -435,7 +435,7 @@ def run_again(name):
         race_pace = get_pace(r_name, r_dist, r_units)
         time.sleep(1)
         cls()
-        race_finish_time = calc_time(r_name, r_dist, dist_conv, race_pace)
+        race_f_time = calc_time(r_name, r_dist, dist_conv, race_pace, r_units)
     else:
         race_time = get_time(r_name, r_dist)
         time.sleep(1)

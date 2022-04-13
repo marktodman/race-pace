@@ -66,11 +66,13 @@ The app is menu driven to reduce user typograph error and enhance UX. Each menu 
 
 ![The distance option menu user feedback.](assets/images/readme-images/distance-menu-user-feedback.png)
 
-Only numbers 1 to 5 are accepted as valid input. Numbers outside of this range will generate an error message and the menu will reload. Alpha characters will also generate an error message and the menu will reload. This continues until the user inputs a number between 1 and 5.
+Only numbers 1 to 5 are accepted as valid input. Numbers outside of this range will generate an error message and the menu will reload. Alpha characters will also generate an error message and the menu will reload. This continues until the user inputs a number between 1 and 5. All error messages are printed in red text on a white background.
 
 ![Example error message for an incorrect number.](assets/images/readme-images/distance-menu-num-error.png)
 
 ![Example error message for a free text input.](assets/images/readme-images/distance-menu-alpha-error.png)
+
+These error checks are coded into every menu selection. The user will not be allowed to advance until a valid input is made.
 
 Once the user has selected their race distance, they are given a choice of whether they prefer to measure in kilometers or miles. This user selection is made once and then the chosen units are used for all calculations.
 
@@ -79,3 +81,28 @@ Once the user has selected their race distance, they are given a choice of wheth
 The user is then asked whether they have a target pace or target finish time for their race. This allows the user to chose to calculate the race splits and either finish time (based on pace) or necessary pace (based on target finish time).
 
 ![The targets menu options.](assets/images/readme-images/targets-menu.png)
+
+At this point the user goes onto one their chosen path and are either asked to input their target race finish time or their target race pace.
+
+![The target finish time input.](assets/images/readme-images/target-finish-time.png)
+
+![The target pace input.](assets/images/readme-images/target-pace.png)
+
+The inputs for both target finish time and target pace are free text. The input must be in the format specified in the text. For the finish time, this must be H:MM:SS. For shorter distances, likely to be completed in less than one hour (e.g. 5km) the hour units must still be input. For the pace input, both MM:SS and M:SS formats can be input. Inputs not in these formats, or that do not represent a recognised time format will generate error messages. The request for input will continue until a valid input is input by the user.
+
+![Time input error message.](assets/images/readme-images/incorrect-time-input.png)
+
+![Pace input error message.](assets/images/readme-images/incorrect-pace-input.png)
+
+![Text input error message.](assets/images/readme-images/incorrect-pace-alpha-input.png)
+
+Once the user has input either their target finish time or target pace, the app calculates either the race pace required to achieve the target finish time, or the finish time based on the target pace. 
+
+The display presents the output of the race finish time, race pace and split times for certain distances markers in the race. Outputs are printed in green text on a white background.
+
+![Output based on target finish time and km.](assets/images/readme-images/splits-km-target-time.png)
+
+![Output based on target finish time and miles.](assets/images/readme-images/splits-miles-target-time.png)
+
+![Output based on target pace time and km.](assets/images/readme-images/splits-km-target-pace.png)
+
