@@ -284,7 +284,7 @@ def calc_time(name, distance_str, distance_num, race_pace):
     finish_time = str(hours) + ":" + min_str + ":" + sec_str
 
     output_text(f"If you run at a pace of {race_pace}")
-    output_text(f"You should complete your {distance_str} in {finish_time}.")
+    output_text(f"You should complete your {distance_str} in {finish_time}")
 
 
 def calc_pace(name, distance_str, distance_num, race_time, unit):
@@ -315,7 +315,7 @@ def calc_pace(name, distance_str, distance_num, race_time, unit):
 
     target_pace = min_str + ":" + sec_str
     output_text(f"To acheive your target finish time of {race_time}")
-    output_text(f"You need to run {target_pace} per {unit}.")
+    output_text(f"You need to run {target_pace} per {unit}")
 
     return target_pace
 
@@ -444,7 +444,7 @@ def run_again(name):
     split_dist = calc_split_dist(dist_conv, r_dist)
     split_time = calc_split_time(split_dist, race_pace)
     race_splits = splits(split_dist, split_time, r_dist, r_units, r_name)
-    time.sleep(3)
+    time.sleep(5)
     start_again(r_name)
 
 
