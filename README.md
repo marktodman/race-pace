@@ -60,7 +60,9 @@ User stories were considered in the application design:
 ### Developer
 
 > *"As the app developer, I want to ensure a positive UX through defensive coding"*
+>
 > *"I want to guide the user through the app"*
+>
 > *"I want to produce accurate and meaningful output for the target audience"*
 
 ## Aims
@@ -171,7 +173,11 @@ Testing has been undertaken throughout the application development. As detailed 
 
 ### Testing of User Stories
 
-The application was tested against all User Stories. The application met the objectives of the First Time User. The application met most of the objectives of the Returning User, although the ability to store and retrieve previously calculated race paces has not been included in this version. This is addressed in the 'Future Development Ideas' section below.
+The application was tested against all User Stories. The application meets the objectives of the First Time User. 
+
+The application meets most of the objectives of the Returning User, although the ability to store and retrieve previously calculated race paces has not been included in this version. This is addressed in the 'Future Development Ideas' section below.
+
+The application meets the objectives of the Developer. The user is guided through the application by clear instructions and defensive coding that prevents the app from crashing or producing an incorrect output. The output is accurate and meaningful based on the needs of the target audience.
 
 ### Manual Testing
 
