@@ -23,9 +23,9 @@ The [GitHub repository.](https://github.com/marktodman/race-pace)
 
 Race Pace is an online application for calculating finish times in popular running race distances: Marathon, Half Marathon, 10km and 5km. Race Pace allows the user to calculate either the pace required to reach a target race finish time, or their race finish time if they run at a user-specified average pace. 
 
-Race Pace will also provide split information to help guide the runner through their race. The split information is times that the runner should be passing certain distance markers in their race. 
+Race Pace will also provide split information to help guide the runner through their race. The split information is the times that the runner should be passing certain distance markers in their race. 
 
-Race Pace will work in either kilometers or miles based on the user's preference.
+Race Pace will work in either kilometres or miles based on the user's preference.
 
 ### Target Audience:
 
@@ -43,7 +43,7 @@ User stories were considered in the application design:
 
 ### First Time User
 
-> *"As an experienced runner, I would like to know how fast I should run to  achieve a target time at various race distances"*
+> *"As an experienced runner, I would like to know how fast I should run to achieve a target time at various race distances"*
 >
 > *"As a novice runner, I would like to know what finish time I will achieve based on my current training pace"*
 >
@@ -74,7 +74,7 @@ The app aims to:
 ## Objectives
 
 To achieve the app aims:
-1. Provide a welcome screen which introduces the app.
+1. Provide a welcome screen that introduces the app.
     * Personalise the user experience by requesting the user's first name.
 1. Ensure that all user input provides an appropriate response.
 1. Provide a menu of options where appropriate to reduce likely user error.
@@ -95,7 +95,7 @@ Users are guided through screens to generate the pacing information. Race Pace r
 
 The user selects their race distance: Marathon, Half Marathon, 10km, 5km. All calculations will be based on their selection.
 
-The user selects their prefered units: kilometers or miles. All calculations will be based on their selection.
+The user selects their prefered units: kilometres or miles. All calculations will be based on their selection.
 
 The user can then select whether they have a target finish time and would like to calculate the required pace to achieve the target. Or, whether they have a target pace and would like to know what finish time this would produce in their race.
 
@@ -104,7 +104,7 @@ Once this selection is made Race Pace calculates and returns the finish time and
 ---
 ## FEATURES
 
-The app is designed to guide the user through the necessary steps to calculate their race pace to acheive their race goals. As the app is hosted in a terminal display, this has been centred on the page. A background image of runners provides context to the app. The RACE PACE title text (named 'speed' on [figlet.org](http://www.figlet.org/fontdb_example.cgi?font=speed.flf)) is coloured in white and green to ephamise that the app is designed for race pacing.
+The app is designed to guide the user through the necessary steps to calculate their race pace to achieve their race goals. As the app is hosted in a terminal display, this has been centred on the page. A background image of runners provides context to the app. The RACE PACE title text (named 'speed' on [figlet.org](http://www.figlet.org/fontdb_example.cgi?font=speed.flf)) is coloured in white and green to emphasise that the app is designed for race pacing.
 
 ![Screenshot of Race Pace start page.](assets/images/readme-images/race-pace-screenshot.png)
 
@@ -116,7 +116,7 @@ The app provides feedback on each input so the user can see their input. This is
 
 ![Name input feedback.](assets/images/readme-images/name-input.png)
 
-The app is menu driven to reduce user typograph error and enhance UX. Each menu contains users options which direct the user through a pathway to deliver a race pace, race time and race splits for their chosen distance. The menu options provide user choice and control, allowing defensive coding to protect the app and produce the desired output for the user. 'Exit' and 'Restart' options exist on each menu. 'Exit' closes the app. Once closed the user can restart by clicking the 'Start Race Button' which is always present onscreen. 'Restart' starts the app from the beginning, allowing the user to enter a new name and continuing through the menus from the start.
+The app has selection menus to reduce user typograph error and enhance UX. Each menu contains user options that direct the user through a pathway to deliver a race pace, race time and race splits for their chosen distance. The menu options provide user choice and control, allowing defensive coding to protect the app and produce the desired output for the user. 'Exit' and 'Restart' options exist on each menu. 'Exit' closes the app. Once closed the user can restart by clicking the 'Start Race Button' which is always present on screen. 'Restart' starts the app from the beginning, allowing the user to enter a new name and continue through the menus from the start.
 
 ![The distance option menu.](assets/images/readme-images/distance-menu.png)
 
@@ -126,19 +126,19 @@ Only numbers 1 to 5 are accepted as valid input. Numbers outside of this range w
 
 ![Example error message for an incorrect number.](assets/images/readme-images/distance-menu-num-error.png)
 
-![Example error message for a free text input.](assets/images/readme-images/distance-menu-alpha-error.png)
+![Example error message for free text input.](assets/images/readme-images/distance-menu-alpha-error.png)
 
 These error checks are coded into every menu selection. The user will not be allowed to advance until a valid input is made.
 
-Once the user has selected their race distance, they are given a choice of whether they prefer to measure in kilometers or miles. This user selection is made once and then the chosen units are used for all calculations.
+Once the user has selected their race distance, they are given a choice of whether they prefer to measure in kilometres or miles. This user selection is made once and then the chosen units are used for all calculations.
 
 ![The units menu options.](assets/images/readme-images/units-menu.png)
 
-The user is then asked whether they have a target pace or target finish time for their race. This allows the user to chose to calculate the race splits and either finish time (based on pace) or necessary pace (based on target finish time).
+The user is then asked whether they have a target pace or target finish time for their race. This allows the user to choose to calculate the race splits and either finish time (based on pace) or necessary pace (based on target finish time).
 
 ![The targets menu options.](assets/images/readme-images/targets-menu.png)
 
-At this point the user goes onto one their chosen path and are either asked to input their target race finish time or their target race pace.
+At this point, the user goes onto their chosen path and are either asked to input their target race finish time or their target race pace.
 
 ![The target finish time input.](assets/images/readme-images/target-finish-time.png)
 
@@ -152,7 +152,7 @@ The inputs for both target finish time and target pace are free text. The input 
 
 ![Text input error message.](assets/images/readme-images/incorrect-pace-alpha-input.png)
 
-Once the user has input either their target finish time or target pace, the app calculates either the race pace required to achieve the target finish time, or the finish time based on the target pace. 
+Once the user has input either their target finish time or target pace, the app calculates either the race pace required to achieve the target finish time or the finish time based on the target pace. 
 
 The display presents the output of the race finish time, race pace and split times for certain distances markers in the race. Outputs are printed in green text on a white background.
 
@@ -162,23 +162,27 @@ The display presents the output of the race finish time, race pace and split tim
 
 ![Output based on target pace time and km.](assets/images/readme-images/splits-km-target-pace.png)
 
-The user is then asked whether they would like to calculate another race pace. The choice will either restart the process at the distance selection page, retaining the user name, or will exit the application.
+The user is then asked whether they would like to calculate another race pace. The choice will either restart the process at the distance selection page, retaining the user name or will exit the application.
 
 ---
 ## TESTING
 
-Testing has been undertaken throughout app development.
+Testing has been undertaken throughout the application development. As detailed in the 'Features' section above, testing for valid inputs was intrinsic to feature development.
+
+### Testing of User Stories
+
+The application was tested against all User Stories. The application met the objectives of the First Time User. The application met most of the objectives of the Returning User, although the ability to store and retrieve previously calculated race paces has not been included in this version. This is addressed in the 'Future Development Ideas' section below.
 
 ### Manual Testing
 
-The app has been manually tested throughout development to ensure potential input variations gave the intended response. Manual testing has been undertaken on all variations for each distance including pace, time, miles and kilometers, which generates sixteeen different combinations.
+The app has been manually tested throughout development to ensure potential input variations gave the intended response. Manual testing has been undertaken on all variations for each distance including pace, time, miles and kilometres, which generates sixteen different combinations.
 
 ### PEP8 Testing and bug resolution
 
-During app development the code was passed through a PEP8 linter. There were two main issues that required resolution:
+During the application development, the code was passed through a PEP8 linter. There were two main issues that required resolution:
 
-1. Some lines of code exceed 80 characters. Solution: shortern code.
-1. Bare except code. Solution: specify the error, which throught this app is ValueError. This makes the app code more robust and means that only specific ValueError issues will be caught by the code.
+1. Some lines of code exceed 80 characters. Solution: shorten code.
+1. Bare except code. Solution: specify the error, which throughout this app is ValueError. This makes the app code more robust and means that only specific ValueError issues will be caught by the code.
 1. Issue displaying time format when the returned answer started with zero. Solution: create an if statement to add a zero to the print string when the returned number was less than 10.
 
 There are no remaining bugs.
@@ -204,7 +208,7 @@ The Race Pace app is deployed via [GitHub](https://github.com/) and [Heroku](htt
 
 ### GitHub Repository
 
-The code located in a [GitHub repository](https://github.com/marktodman/race-pace).
+The code is located in a [GitHub repository](https://github.com/marktodman/race-pace).
 
 ### Forking the GitHub Repository
 
@@ -213,7 +217,7 @@ To use this code and make changes without affecting the original code, it is pos
 1. Create an account at [GitHub](https://github.com/).
 1. Log into your GitHub account.
 1. Go to the GitHub repository for [Race Pace](https://github.com/marktodman/race-pace).
-1. Click the 'Fork' button in the upper right hand corner of the page.
+1. Click the 'Fork' button in the upper right-hand corner of the page.
 1. A copy of the repository will be available in your own repository.
 
 ### Heroku Deployment 
@@ -221,12 +225,12 @@ To use this code and make changes without affecting the original code, it is pos
 The site is deployed to [Heroku](https://www.heroku.com) through the following steps:
   
 1. Log in to Heroku or create an account if required.
-1. On the Welcome page click the button labeled 'New' in the top right corner, just below the header.
+1. On the Welcome page click the button labelled 'New' in the top right corner, just below the header.
 1. From the drop-down menu select 'Create new app'.
 1. Enter a unique app name. 
 1. Select the relevant geographical region.
 1. Click to 'Create App'.
-1. Navigate to 'Settings' and scroll down to the 'Config Vars' setion. 
+1. Navigate to 'Settings' and scroll down to the 'Config Vars' section. 
 1. Click 'Reveal Config Vars' and enter 'PORT' for the key and '8000' for the value. Then click 'Add'.
 1. Scroll down to the 'Buildpacks' section and click 'Add buildpack'.
 1. Select 'python' and click 'Save Changes'.

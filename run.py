@@ -134,13 +134,13 @@ def runner_distance(name):
 
 def runner_units(name):
     """
-    Gets the runner's choice of units - kilometers or miles - from a menu
+    Gets the runner's choice of units - kilometres or miles - from a menu
     to avoid typing errors.
     """
     while True:
-        print(f"Would you prefer to use miles or kilometers, {name}?")
+        print(f"Would you prefer to use miles or kilometres, {name}?")
         print("-" * 40)
-        print("1: Kilometers")
+        print("1: Kilometres")
         print("2: Miles")
         print("3: Restart")
         print("4: Exit")
@@ -153,7 +153,7 @@ def runner_units(name):
             error_text("Wrong input type...")
 
         if choice == 1:
-            input_text("You selected 'Kilometers'")
+            input_text("You selected 'Kilometres'")
             return "km"
         elif choice == 2:
             input_text("You selected 'Miles'")
